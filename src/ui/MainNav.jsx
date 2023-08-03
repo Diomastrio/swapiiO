@@ -69,7 +69,7 @@ function MainNav() {
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/users">
+          <StyledNavLink to="/Productos">
             <HiOutlineQueueList />
             <span>Agregar Articulos</span>
           </StyledNavLink>

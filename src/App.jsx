@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 import GlobalStyles from "./styles/GlobalStyles";
 import Dashboard from "./pages/Dashboard";
 import Bookings from "./pages/Bookings";
-import Cabins from "./pages/Cabins";
+import Productos from "./pages/Productos";
 import Users from "./pages/Users";
 import Settings from "./pages/Settings";
 import Account from "./pages/Account";
@@ -49,7 +49,8 @@ function App() {
               <Route path="bookings" element={<Bookings />} />
               <Route path="bookings/:bookingId" element={<Booking />} />
               <Route path="checkin/:bookingId" element={<Checkin />} />
-              <Route path="cabins" element={<Cabins />} />
+              {/* <Route path="cabins" element={<Cabins />} /> */}
+              <Route path="productos" element={<Productos />} />
               <Route path="users" element={<Users />} />
               <Route path="settings" element={<Settings />} />
               <Route path="account" element={<Account />} />

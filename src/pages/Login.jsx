@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Logo from "../ui/Logo";
 import Heading from "../ui/Heading";
 import SignupForm from "../features/authentication/SignupForm";
+import UsuarioCreado from "../features/authentication/UsuarioCreado";
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -19,6 +20,7 @@ function Login() {
       <Logo />
       <Heading as="h4">Crea tu usuario</Heading>
       <SignupForm />
+      <UsuarioCreado />
     </LoginLayout>
   );
 }

@@ -30,17 +30,17 @@ function SignupForm() {
           type="text"
           id="fullName"
           disabled={isLoading}
-          {...register("fullName", { required: "This field is required" })}
+          {...register("fullName", { required: "Este campo es obligatorio" })}
         />
       </FormRow>
 
-      <FormRow label="Email address" error={errors?.email?.message}>
+      <FormRow label="Correo electronico" error={errors?.email?.message}>
         <Input
           type="email"
           id="email"
           disabled={isLoading}
           {...register("email", {
-            required: "This field is required",
+            required: "Este campo es obligatorio",
             pattern: {
               value: /\S+@\S+\.\S+/,
               message: "Please provide a valid email address",
@@ -50,7 +50,7 @@ function SignupForm() {
       </FormRow>
 
       <FormRow
-        label="Password (min 8 characters)"
+        label="Contraseña (8 caracteres min)"
         error={errors?.password?.message}
       >
         <Input
@@ -58,7 +58,7 @@ function SignupForm() {
           id="password"
           disabled={isLoading}
           {...register("password", {
-            required: "This field is required",
+            required: "Este campo es obligatorio",
             minLength: {
               value: 8,
               message: "Password needs a minimum of 8 characters",
@@ -67,15 +67,19 @@ function SignupForm() {
         />
       </FormRow>
 
-      <FormRow label="Repeat password" error={errors?.passwordConfirm?.message}>
+      <FormRow
+        label="Reingrese contraseña"
+        error={errors?.passwordConfirm?.message}
+      >
         <Input
           type="password"
           id="passwordConfirm"
           disabled={isLoading}
           {...register("passwordConfirm", {
-            required: "This field is required",
+            required: "Este campo es obligatorio",
             validate: (value) =>
-              value === getValues().password || "Passwords need to match",
+              value === getValues().password ||
+              "Las contraseñas deben coincidir",
           })}
         />
       </FormRow>
