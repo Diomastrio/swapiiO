@@ -1,5 +1,5 @@
 import supabase, { supabaseUrl } from "./supabase";
-
+// , { supabaseUrl }
 export async function getProductos() {
   const { data, error } = await supabase.from("productos").select("*");
 
@@ -21,17 +21,17 @@ export async function createEditProducto(newProducto, id) {
   const imagePath = hasImagePath
     ? newProducto.image
     : `${supabaseUrl}/storage/v1/object/public/articulos/${imageName}`;
-  //https://fmggwikrusxsmyiwiwqu.supabase.co/storage/v1/object/public/articulos/lumquas%20sister.jpg
-  // 1. Create/edit cabin
+  // //https://fmggwikrusxsmyiwiwqu.supabase.co/storage/v1/object/public/articulos/lumquas%20sister.jpg
+  // // 1. Create/edit cabin
   let query = supabase.from("productos");
 
   // A) CREATE
   if (!id) query = query.insert([{ ...newProducto, image: imagePath }]);
-
+  // , image: imagePath
   // B) EDIT
   if (id)
     query = query.update({ ...newProducto, image: imagePath }).eq("id", id);
-
+  // , image: imagePath
   const { data, error } = await query.select().single();
 
   if (error) {
@@ -43,7 +43,7 @@ export async function createEditProducto(newProducto, id) {
   if (hasImagePath) return data;
 
   const { error: storageError } = await supabase.storage
-    .from("producto-images")
+    .from("articulos")
     .upload(imageName, newProducto.image);
 
   // 3. Delete the cabin IF there was an error uplaoding image
