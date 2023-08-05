@@ -39,7 +39,7 @@ function ProductoTable() {
           <div>nombre</div>
           <div>Precio</div>
           <div>cantidad</div>
-          <div></div>
+          <div>Precio</div>
           <div>Descripcion</div>
           <div></div>
         </Table.Header>

@@ -5,7 +5,7 @@ export async function getProductos() {
 
   if (error) {
     console.error(error);
-    throw new Error("Cabins could not be loaded");
+    throw new Error("Productos could not be loaded");
   }
 
   return data;
@@ -20,8 +20,8 @@ export async function createEditProducto(newProducto, id) {
   );
   const imagePath = hasImagePath
     ? newProducto.image
-    : `${supabaseUrl}/storage/v1/object/public/producto-images/${imageName}`;
-
+    : `${supabaseUrl}/storage/v1/object/public/articulos/${imageName}`;
+  //https://fmggwikrusxsmyiwiwqu.supabase.co/storage/v1/object/public/articulos/lumquas%20sister.jpg
   // 1. Create/edit cabin
   let query = supabase.from("productos");
 

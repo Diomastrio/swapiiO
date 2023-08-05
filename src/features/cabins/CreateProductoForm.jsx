@@ -98,13 +98,10 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
         />
       </FormRow>
 
-      <FormRow
-        label="Description for website"
-        error={errors?.descripcion?.message}
-      >
+      <FormRow label="Descripcion" error={errors?.descripcion?.message}>
         <Textarea
           type="text"
-          id="description"
+          id="descripcion"
           defaultValue=""
           disabled={isWorking}
           {...register("descripcion", {
