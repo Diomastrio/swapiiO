@@ -8,7 +8,8 @@ export function useCreateProducto() {
   const { mutate: createProducto, isLoading: isCreating } = useMutation({
     mutationFn: createEditProducto,
     onSuccess: () => {
-      toast.success("New productp successfully created");
+      toast.success("Nuevo producto exitosamente creado");
+
       queryClient.invalidateQueries({ queryKey: ["productos"] });
     },
     onError: (err) => toast.error(err.message),

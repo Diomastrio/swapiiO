@@ -9,7 +9,7 @@ export function useEditProducto() {
     mutationFn: ({ newProductoData, id }) =>
       createEditProducto(newProductoData, id),
     onSuccess: () => {
-      toast.success("Cabin successfully edited");
+      toast.success("Producto exitosamente editado");
       queryClient.invalidateQueries({ queryKey: ["productos"] });
     },
     onError: (err) => toast.error(err.message),

@@ -8,7 +8,7 @@ export function useDeleteProducto() {
   const { isLoading: isDeleting, mutate: deleteProducto } = useMutation({
     mutationFn: deleteProductoApi,
     onSuccess: () => {
-      toast.success("Cabin successfully deleted");
+      toast.success("Producto existosamente eliminado");
 
       queryClient.invalidateQueries({
         queryKey: ["productos"],

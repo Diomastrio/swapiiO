@@ -63,7 +63,7 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
           id="name"
           disabled={isWorking}
           {...register("name", {
-            required: "This field is required",
+            required: "Este campo es requerido",
           })}
         />
       </FormRow>
@@ -74,10 +74,10 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
           id="precio"
           disabled={isWorking}
           {...register("precio", {
-            required: "This field is required",
+            required: "Este campo es requerido",
             min: {
               value: 1,
-              message: "Capacity should be at least 1",
+              message: "El precio debe ser minimo 1",
             },
           })}
         />
@@ -89,7 +89,7 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
           id="cantidad"
           disabled={isWorking}
           {...register("cantidad", {
-            required: "This field is required",
+            required: "Este campo es requerido",
             min: {
               value: 1,
               message: "Capacity should be at least 1",
@@ -105,17 +105,17 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
           defaultValue=""
           disabled={isWorking}
           {...register("descripcion", {
-            required: "This field is required",
+            required: "Este campo es requerido",
           })}
         />
       </FormRow>
 
-      <FormRow label="Producto photo">
+      <FormRow label="Producto imagen">
         <FileInput
           id="image"
           accept="image/*"
           {...register("image", {
-            required: isEditSession ? false : "This field is required",
+            required: isEditSession ? false : "Este campo es requerido",
           })}
         />
       </FormRow>
@@ -130,7 +130,7 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
           Cancel
         </Button>
         <Button disabled={isWorking}>
-          {isEditSession ? "Edit producto" : "Create new producto"}
+          {isEditSession ? "Editar producto" : "Crear un producto"}
         </Button>
       </FormRow>
     </Form>

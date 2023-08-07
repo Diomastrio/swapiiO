@@ -34,15 +34,7 @@ function ArticuloTable() {
   return (
     <Menus>
       <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
-        <Table.Header>
-          <div>Articulo</div>
-          <div>nombre</div>
-          <div></div>
-          <div>cantidad</div>
-          <div>Precio</div>
-          <div>Descripcion</div>
-          <div></div>
-        </Table.Header>
+        <Table.Header></Table.Header>
 
         <Table.Body
           // data={cabins}

@@ -17,7 +17,7 @@ import { HiChatBubbleLeftRight, HiShoppingBag } from "react-icons/hi2";
 // `;
 const Card = styled.div`
   width: 300px;
-  height: 400px;
+  height: 470px;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -52,12 +52,12 @@ const Descripcion = styled.p`
   font-weight: 500;
   color: var(--color-green-700);
 `;
-const Producto = styled.div`
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--color-grey-600);
-  font-family: "Sono";
-`;
+// const Producto = styled.div`
+//   font-size: 1.6rem;
+//   font-weight: 600;
+//   color: var(--color-grey-600);
+//   font-family: "Sono";
+// `;
 
 const Precio = styled.div`
   font-family: "Sono";
@@ -81,10 +81,9 @@ function ArtiCard({ producto }) {
       <Content>
         <Image src={image} />
         <Title>{name}</Title>
-        <Producto>{precio}</Producto>
-        <div>Numero de articulos: {cantidad} </div>
-        <Precio>{formatCurrency(precio)}</Precio>
         <Descripcion>{descripcion}</Descripcion>
+        <Precio>{formatCurrency(precio)}</Precio>
+        <div>Numero de articulos: {cantidad} </div>
         <Modal>
           <Menus.Menu>
             <Menus.Toggle id={productoId} />
@@ -93,7 +92,9 @@ function ArtiCard({ producto }) {
               <Menus.Button icon={<HiChatBubbleLeftRight />}>
                 Mensaje
               </Menus.Button>{" "}
-              <Menus.Button icon={<HiShoppingBag />}>Editar</Menus.Button>
+              <Menus.Button icon={<HiShoppingBag />}>
+                Agregar a bolsa
+              </Menus.Button>
             </Menus.List>
           </Menus.Menu>
         </Modal>
