@@ -57,7 +57,7 @@ function MainNav() {
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to="/dashboard">
+          <StyledNavLink to="/Articulos">
             <HiShoppingCart />
             <span>Articulos</span>
           </StyledNavLink>

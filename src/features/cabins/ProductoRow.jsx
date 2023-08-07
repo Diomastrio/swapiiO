@@ -71,7 +71,7 @@ function ProductoRow({ producto }) {
 
   function handleDuplicate() {
     createProducto({
-      name: `Copy of ${name}`,
+      name: `Copia de ${name}`,
       precio,
       cantidad,
       descripcion,
@@ -89,7 +89,7 @@ function ProductoRow({ producto }) {
       <div>Numero de articulos: {cantidad} </div>
       <Precio>{formatCurrency(precio)}</Precio>
 
-      <Descripcion>{formatCurrency(descripcion)}</Descripcion>
+      <Descripcion>{descripcion}</Descripcion>
 
       <div>
         <Modal>
@@ -102,15 +102,15 @@ function ProductoRow({ producto }) {
                 onClick={handleDuplicate}
                 disabled={isCreating}
               >
-                Duplicate
+                Duplicar
               </Menus.Button>
 
               <Modal.Open opens="edit">
-                <Menus.Button icon={<HiPencil />}>Edit</Menus.Button>
+                <Menus.Button icon={<HiPencil />}>Editar</Menus.Button>
               </Modal.Open>
 
               <Modal.Open opens="delete">
-                <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
+                <Menus.Button icon={<HiTrash />}>Eliminar</Menus.Button>
               </Modal.Open>
             </Menus.List>
 

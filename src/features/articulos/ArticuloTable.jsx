@@ -1,12 +1,12 @@
 import Spinner from "../../ui/Spinner";
-import ProductoRow from "./ProductoRow";
-import { useProductos } from "./useProducto";
+import ArtiCard from "./ArtiCard";
+import { useProductos } from "../cabins/useProducto";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
 
-function ProductoTable() {
+function ArticuloTable() {
   const { isLoading, productos } = useProductos();
   const [searchParams] = useSearchParams();
 
@@ -49,7 +49,7 @@ function ProductoTable() {
           // data={filteredCabins}
           data={sortedProductos}
           render={(producto) => (
-            <ProductoRow producto={producto} key={producto.id} />
+            <ArtiCard producto={producto} key={producto.id} />
           )}
         />
       </Table>
@@ -57,4 +57,4 @@ function ProductoTable() {
   );
 }
 
-export default ProductoTable;
+export default ArticuloTable;
