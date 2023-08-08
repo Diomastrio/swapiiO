@@ -1,14 +1,14 @@
 import supabase, { supabaseUrl } from "./supabase";
-// , { supabaseUrl }
-export async function getProductos() {
-  const { data, error } = await supabase.from("productos").select("*");
 
-  if (error) {
-    console.error(error);
-    throw new Error("Productos could not be loaded");
-  }
+async function insertUserEmail() {
+  // Get the user email
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  console.log(user.email); // prints the user email
 
-  return data;
+  // Return the user email
+  return user.email;
 }
 
 export async function createEditProducto(newProducto, id) {
@@ -22,16 +22,21 @@ export async function createEditProducto(newProducto, id) {
     ? newProducto.image
     : `${supabaseUrl}/storage/v1/object/public/articulos/${imageName}`;
   // //https://fmggwikrusxsmyiwiwqu.supabase.co/storage/v1/object/public/articulos/lumquas%20sister.jpg
-  // // 1. Create/edit cabin
+
+  // Get the user email
+  const userEmail = await insertUserEmail();
+
+  // Add the user email to the newProducto object
+  newProducto.email = userEmail;
+
+  // // 1. Crear/editar productos
   let query = supabase.from("productos");
 
-  // A) CREATE
+  // A) CREAR
   if (!id) query = query.insert([{ ...newProducto, image: imagePath }]);
-  // , image: imagePath
-  // B) EDIT
+  // B) EDITAR
   if (id)
     query = query.update({ ...newProducto, image: imagePath }).eq("id", id);
-  // , image: imagePath
   const { data, error } = await query.select().single();
 
   if (error) {
@@ -53,20 +58,6 @@ export async function createEditProducto(newProducto, id) {
     throw new Error(
       "La imagen del articulo no se pudo cargar y el producto no se creó"
     );
-  }
-
-  return data;
-}
-
-export async function deleteProducto(id) {
-  const { data, error } = await supabase
-    .from("productos")
-    .delete()
-    .eq("id", id);
-
-  if (error) {
-    console.error(error);
-    throw new Error("Producto could not be deleted");
   }
 
   return data;

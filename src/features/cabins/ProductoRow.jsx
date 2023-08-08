@@ -51,6 +51,7 @@ const Descripcion = styled.div`
 const Nombre = styled.div`
   font-family: "Sono";
   font-weight: 500;
+
   color: var(--color-green-700);
 `;
 
@@ -85,7 +86,7 @@ function ProductoRow({ producto }) {
     <Table.Row>
       <Img src={image} />
       <Nombre>{name}</Nombre>
-      <Producto>{precio}</Producto>
+      <Producto>{}</Producto>
       <div>Numero de articulos: {cantidad} </div>
       <Precio>{formatCurrency(precio)}</Precio>
 

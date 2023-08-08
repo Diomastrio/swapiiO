@@ -9,6 +9,7 @@ import FormRow from "../../ui/FormRow";
 
 import { useCreateProducto } from "./useCreateProducto";
 import { useEditProducto } from "./useEditProducto";
+// import insertUserEmail from "./useEmail";
 
 function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
   const { isCreating, createProducto } = useCreateProducto();
@@ -43,6 +44,8 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
           onSuccess: (data) => {
             reset();
             onCloseModal?.();
+            //insertamos el email
+            // insertUserEmail();
           },
         }
       );
@@ -92,7 +95,7 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
             required: "Este campo es requerido",
             min: {
               value: 1,
-              message: "Capacity should be at least 1",
+              message: "cantidad deberia ser minimo 1",
             },
           })}
         />
