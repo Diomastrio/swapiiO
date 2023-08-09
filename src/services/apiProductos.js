@@ -5,8 +5,6 @@ async function insertUserEmail() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  console.log(user.email); // prints the user email
-
   // Return the user email
   return user.email;
 }
@@ -21,24 +19,20 @@ export async function createEditProducto(newProducto, id) {
   const imagePath = hasImagePath
     ? newProducto.image
     : `${supabaseUrl}/storage/v1/object/public/articulos/${imageName}`;
-  // //https://fmggwikrusxsmyiwiwqu.supabase.co/storage/v1/object/public/articulos/lumquas%20sister.jpg
 
   // Get the user email
   const userEmail = await insertUserEmail();
-
   // Add the user email to the newProducto object
   newProducto.email = userEmail;
 
   // // 1. Crear/editar productos
   let query = supabase.from("productos");
-
   // A) CREAR
   if (!id) query = query.insert([{ ...newProducto, image: imagePath }]);
   // B) EDITAR
   if (id)
     query = query.update({ ...newProducto, image: imagePath }).eq("id", id);
   const { data, error } = await query.select().single();
-
   if (error) {
     console.error(error);
     throw new Error("Producto could not be created");
@@ -73,7 +67,17 @@ export async function getProductos() {
 
   return data;
 }
-//   Hello divi from anderson cavani
+
+
+export async function getProductosTable() {
+  const userEmail = await insertUserEmail();
+  const { data, error } = await supabase.from("productos").select("*").eq("email", userEmail);
+  if (error) {
+    console.error(error);
+    throw new Error("Productos could not be loaded");
+  }
+  return data;
+}
 
 // export async function createEditProducto(newProducto, id) {
 //   const hasImagePath = newProducto.image?.startsWith?.(supabaseUrl);

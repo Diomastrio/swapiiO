@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers";
 import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
-import { HiChatBubbleLeftRight, HiShoppingBag } from "react-icons/hi2";
+import { HiChatBubbleLeftRight, HiBookmark } from "react-icons/hi2";
 
 // const TableRow = styled.div`
 //   display: grid;
@@ -92,9 +92,7 @@ function ArtiCard({ producto }) {
               <Menus.Button icon={<HiChatBubbleLeftRight />}>
                 Mensaje
               </Menus.Button>{" "}
-              <Menus.Button icon={<HiShoppingBag />}>
-                Agregar a bolsa
-              </Menus.Button>
+              <Menus.Button icon={<HiBookmark />}>Guardar</Menus.Button>
             </Menus.List>
           </Menus.Menu>
         </Modal>

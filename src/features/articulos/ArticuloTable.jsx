@@ -1,10 +1,11 @@
+import { useProductos } from "../cabins/useProducto";
+
 import Spinner from "../../ui/Spinner";
 import ArtiCard from "./ArtiCard";
-import { useProductos } from "../cabins/useProducto";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
-import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
+import { useSearchParams } from "react-router-dom";
 
 function ArticuloTable() {
   const { isLoading, productos } = useProductos();

@@ -9,7 +9,6 @@ import FormRow from "../../ui/FormRow";
 
 import { useCreateProducto } from "./useCreateProducto";
 import { useEditProducto } from "./useEditProducto";
-// import insertUserEmail from "./useEmail";
 
 function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
   const { isCreating, createProducto } = useCreateProducto();
@@ -44,8 +43,6 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
           onSuccess: (data) => {
             reset();
             onCloseModal?.();
-            //insertamos el email
-            // insertUserEmail();
           },
         }
       );
