@@ -73,6 +73,7 @@ export async function getProductos() {
 
   return data;
 }
+//   Hello divi from anderson cavani
 
 // export async function createEditProducto(newProducto, id) {
 //   const hasImagePath = newProducto.image?.startsWith?.(supabaseUrl);
