@@ -4,8 +4,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 
 import GlobalStyles from "./styles/GlobalStyles";
-import Dashboard from "./pages/Dashboard";
-import Bookings from "./pages/Bookings";
 import Productos from "./pages/Productos";
 import Users from "./pages/Users";
 import Settings from "./pages/Settings";
@@ -13,12 +11,9 @@ import Account from "./pages/Account";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./ui/AppLayout";
-import Booking from "./pages/Booking";
-import Checkin from "./pages/Checkin";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import Entrar from "./pages/Entrar";
-import Cabins from "./pages/Cabins";
 import Articulos from "./pages/Articulos";
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,11 +41,6 @@ function App() {
               }
             >
               <Route index element={<Navigate replace to="articulos" />} />
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="bookings" element={<Bookings />} />
-              <Route path="bookings/:bookingId" element={<Booking />} />
-              <Route path="checkin/:bookingId" element={<Checkin />} />
-              <Route path="cabins" element={<Cabins />} />
               <Route path="productos" element={<Productos />} />
               <Route path="articulos" element={<Articulos />} />
 
