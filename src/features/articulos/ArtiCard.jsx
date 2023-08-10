@@ -4,6 +4,12 @@ import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
 import { HiBookmark } from "react-icons/hi2";
 import { IoLogoWhatsapp } from "react-icons/io";
+import { getNumber } from "../../services/apiWhatsApp";
+
+function handleButtonClick() {
+  // const id = id; // Replace with the actual ID
+  getNumber();
+}
 
 const Card = styled.div`
   width: 300px;
@@ -79,7 +85,12 @@ function ArtiCard({ producto }) {
             <Menus.Toggle id={productoId} />
 
             <Menus.List id={productoId}>
-              <Menus.Button icon={<IoLogoWhatsapp />}>Mensaje </Menus.Button>{" "}
+              <Menus.Button
+                onClick={handleButtonClick}
+                icon={<IoLogoWhatsapp />}
+              >
+                Mensaje{" "}
+              </Menus.Button>{" "}
               <Menus.Button icon={<HiBookmark />}>Guardar</Menus.Button>
             </Menus.List>
           </Menus.Menu>

@@ -28,10 +28,10 @@ function UpdatePasswordForm() {
           autoComplete="current-password"
           disabled={isUpdating}
           {...register("password", {
-            required: "This field is required",
+            required: "Este campo es requerido",
             minLength: {
               value: 8,
-              message: "Password needs a minimum of 8 characters",
+              message: "La contraseña debe ser minimo 8 caracteres",
             },
           })}
         />
@@ -47,7 +47,7 @@ function UpdatePasswordForm() {
           id="passwordConfirm"
           disabled={isUpdating}
           {...register("passwordConfirm", {
-            required: "This field is required",
+            required: "Este campo es requerido",
             validate: (value) =>
               getValues().password === value || "Passwords need to match",
           })}

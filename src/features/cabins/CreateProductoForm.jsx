@@ -57,7 +57,7 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
       onSubmit={handleSubmit(onSubmit, onError)}
       type={onCloseModal ? "modal" : "regular"}
     >
-      <FormRow label="Producto name" error={errors?.name?.message}>
+      <FormRow label="Nombre del producto" error={errors?.name?.message}>
         <Input
           type="text"
           id="name"
@@ -83,7 +83,7 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
         />
       </FormRow>
 
-      <FormRow label="cantidad" error={errors?.cantidad?.message}>
+      <FormRow label="Cantidad" error={errors?.cantidad?.message}>
         <Input
           type="number"
           id="cantidad"
@@ -110,7 +110,7 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
         />
       </FormRow>
 
-      <FormRow label="Producto imagen">
+      <FormRow label="Imagen del producto">
         <FileInput
           id="image"
           accept="image/*"
