@@ -4,17 +4,7 @@ import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
 import { HiBookmark } from "react-icons/hi2";
 import { IoLogoWhatsapp } from "react-icons/io";
-// const TableRow = styled.div`
-//   display: grid;
-//   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-//   column-gap: 2.4rem;
-//   align-items: center;
-//   padding: 1.4rem 2.4rem;
 
-//   &:not(:last-child) {
-//     border-bottom: 1px solid var(--color-grey-100);
-//   }
-// `;
 const Card = styled.div`
   width: 300px;
   height: 470px;
@@ -89,12 +79,7 @@ function ArtiCard({ producto }) {
             <Menus.Toggle id={productoId} />
 
             <Menus.List id={productoId}>
-              <Menus.Button
-                //  onClick={}
-                icon={<IoLogoWhatsapp />}
-              >
-                Mensaje
-              </Menus.Button>{" "}
+              <Menus.Button icon={<IoLogoWhatsapp />}>Mensaje </Menus.Button>{" "}
               <Menus.Button icon={<HiBookmark />}>Guardar</Menus.Button>
             </Menus.List>
           </Menus.Menu>

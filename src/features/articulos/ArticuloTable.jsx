@@ -38,8 +38,6 @@ function ArticuloTable() {
         <Table.Header></Table.Header>
 
         <Table.Body
-          // data={cabins}
-          // data={filteredCabins}
           data={sortedProductos}
           render={(producto) => (
             <ArtiCard producto={producto} key={producto.id} />

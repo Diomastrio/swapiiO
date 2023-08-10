@@ -44,7 +44,9 @@ export async function createEditProducto(newProducto, id) {
   // B) EDITAR
   if (id)
     query = query.update({ ...newProducto, image: imagePath }).eq("id", id);
+
   const { data, error } = await query.select().single();
+
   if (error) {
     console.error(error);
     throw new Error("Producto could not be created");
@@ -93,6 +95,19 @@ export async function getProductosTable() {
   return data;
 }
 
+export async function deleteProducto(id) {
+  const { data, error } = await supabase
+    .from("productos")
+    .delete()
+    .eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Producto could not be deleted");
+  }
+
+  return data;
+}
 // export async function createEditProducto(newProducto, id) {
 //   const hasImagePath = newProducto.image?.startsWith?.(supabaseUrl);
 
@@ -138,17 +153,3 @@ export async function getProductosTable() {
 
 //   return data;
 // }
-
-export async function deleteProducto(id) {
-  const { data, error } = await supabase
-    .from("productos")
-    .delete()
-    .eq("id", id);
-
-  if (error) {
-    console.error(error);
-    throw new Error("Producto could not be deleted");
-  }
-
-  return data;
-}

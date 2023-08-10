@@ -103,7 +103,7 @@ function ProductoRow({ producto }) {
                 onClick={handleDuplicate}
                 disabled={isCreating}
               >
-                Duplicar
+                Duplicar{" "}
               </Menus.Button>
 
               <Modal.Open opens="edit">
