@@ -43,7 +43,7 @@ function SignupForm() {
             required: "Este campo es obligatorio",
             pattern: {
               value: /\S+@\S+\.\S+/,
-              message: "Please provide a valid email address",
+              message: "Porfavor ingresa un correo electronico valido",
             },
           })}
         />

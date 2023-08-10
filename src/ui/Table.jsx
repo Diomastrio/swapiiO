@@ -88,7 +88,12 @@ function Row({ children }) {
 }
 
 function Body({ data, render }) {
-  if (!data.length) return <Empty>No data to show at the moment</Empty>;
+  if (!data.length)
+    return (
+      <Empty>
+        No se encuentran articulos con las caracteristicas solicitadas
+      </Empty>
+    );
 
   return <StyledBody>{data.map(render)}</StyledBody>;
 }

@@ -127,7 +127,7 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
           type="reset"
           onClick={() => onCloseModal?.()}
         >
-          Cancel
+          Cancelar
         </Button>
         <Button disabled={isWorking}>
           {isEditSession ? "Editar producto" : "Crear un producto"}

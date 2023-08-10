@@ -13,7 +13,6 @@ export async function getNumber(id) {
   //   console.log(data.phone);
   if (error) {
     console.error(error);
-    throw new Error("Producto could not be created");
   }
   return productos;
 }
