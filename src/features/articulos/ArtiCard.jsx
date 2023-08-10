@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers";
 import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
-import { HiChatBubbleLeftRight, HiBookmark } from "react-icons/hi2";
-
+import { HiBookmark } from "react-icons/hi2";
+import { IoLogoWhatsapp } from "react-icons/io";
 // const TableRow = styled.div`
 //   display: grid;
 //   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
@@ -89,7 +89,10 @@ function ArtiCard({ producto }) {
             <Menus.Toggle id={productoId} />
 
             <Menus.List id={productoId}>
-              <Menus.Button icon={<HiChatBubbleLeftRight />}>
+              <Menus.Button
+                //  onClick={}
+                icon={<IoLogoWhatsapp />}
+              >
                 Mensaje
               </Menus.Button>{" "}
               <Menus.Button icon={<HiBookmark />}>Guardar</Menus.Button>

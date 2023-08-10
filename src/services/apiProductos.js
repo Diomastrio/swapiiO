@@ -8,6 +8,14 @@ async function insertUserEmail() {
   // Return the user email
   return user.email;
 }
+async function insertUserPhone() {
+  // Get the user email
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  // Return the user email
+  return user.user_metadata.phone;
+}
 
 export async function createEditProducto(newProducto, id) {
   const hasImagePath = newProducto.image?.startsWith?.(supabaseUrl);
@@ -22,8 +30,12 @@ export async function createEditProducto(newProducto, id) {
 
   // Get the user email
   const userEmail = await insertUserEmail();
+  // Get the user phone
+  const userPhone = await insertUserPhone();
+
   // Add the user email to the newProducto object
   newProducto.email = userEmail;
+  newProducto.phone = userPhone;
 
   // // 1. Crear/editar productos
   let query = supabase.from("productos");
@@ -68,10 +80,12 @@ export async function getProductos() {
   return data;
 }
 
-
 export async function getProductosTable() {
   const userEmail = await insertUserEmail();
-  const { data, error } = await supabase.from("productos").select("*").eq("email", userEmail);
+  const { data, error } = await supabase
+    .from("productos")
+    .select("*")
+    .eq("email", userEmail);
   if (error) {
     console.error(error);
     throw new Error("Productos could not be loaded");

@@ -13,9 +13,9 @@ function SignupForm() {
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
-  function onSubmit({ fullName, email, password }) {
+  function onSubmit({ fullName, email, password, phone }) {
     signup(
-      { fullName, email, password },
+      { fullName, email, password, phone },
       {
         onSettled: () => reset(),
       }
@@ -25,7 +25,7 @@ function SignupForm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <FormRow label="Full name" error={errors?.fullName?.message}>
+      <FormRow label="Nombre completo" error={errors?.fullName?.message}>
         <Input
           type="text"
           id="fullName"
@@ -46,6 +46,15 @@ function SignupForm() {
               message: "Please provide a valid email address",
             },
           })}
+        />
+      </FormRow>
+
+      <FormRow label="Telefono" error={errors?.phone?.message}>
+        <Input
+          type="number"
+          id="phone"
+          disabled={isLoading}
+          {...register("phone", { required: "Este campo es obligatorio" })}
         />
       </FormRow>
 
@@ -85,16 +94,15 @@ function SignupForm() {
       </FormRow>
 
       <FormRow>
-        {/* type is an HTML attribute! */}
         <Button
           variation="secondary"
           type="reset"
           disabled={isLoading}
           onClick={reset}
         >
-          Cancel
+          Cancelar
         </Button>
-        <Button disabled={isLoading}>Create new user</Button>
+        <Button disabled={isLoading}>Registrarse</Button>
       </FormRow>
     </Form>
   );
