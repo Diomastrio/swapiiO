@@ -3,24 +3,24 @@ import styled from "styled-components";
 
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
-
   font-size: 1.4rem;
   background-color: var(--color-grey-0);
   border-radius: 7px;
   overflow: hidden;
+width:100%
+
 `;
 
 const CommonRow = styled.div`
   display: grid;
   grid-template-columns: ${(props) => props.columns};
-  column-gap: 2.4rem;
+  column-gap: 0rem;
   align-items: center;
   transition: none;
 `;
 
 const StyledHeader = styled(CommonRow)`
-  padding: 1.6rem 2.4rem;
-
+  padding: 1.6rem 2rem;
   background-color: var(--color-grey-50);
   border-bottom: 1px solid var(--color-grey-100);
   text-transform: uppercase;
@@ -41,13 +41,23 @@ const StyledBody = styled.section`
   margin: 0.4rem 0;
 `;
 
+const StyledBodyi = styled.section`
+  margin: 0.4rem 0;
+
+  display: flex;
+  flex-wrap:wrap;
+  height:100%
+`;
+
 const Footer = styled.footer`
   background-color: var(--color-grey-50);
   display: flex;
   justify-content: center;
   padding: 1.2rem;
 
-  /* This will hide the footer when it contains no child elements. Possible thanks to the parent selector :has 🎉 */
+  /* This will hide the footer when it contains no child elements.
+   Possible thanks to the parent selector :has 🎉 */
+
   &:not(:has(*)) {
     display: none;
   }
@@ -98,8 +108,21 @@ function Body({ data, render }) {
   return <StyledBody>{data.map(render)}</StyledBody>;
 }
 
+function Bodyi({ data, render }) {
+  if (!data.length)
+    return (
+      <Empty>
+        No se encuentran articulos con las caracteristicas solicitadas
+      </Empty>
+    );
+
+  return <StyledBodyi>{data.map(render)}</StyledBodyi>;
+}
+
 Table.Header = Header;
 Table.Body = Body;
+Table.Bodyi = Bodyi;
+
 Table.Row = Row;
 Table.Footer = Footer;
 

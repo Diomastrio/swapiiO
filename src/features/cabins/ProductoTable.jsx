@@ -1,6 +1,12 @@
-import Spinner from "../../ui/Spinner";
 import ProductoRow from "./ProductoRow";
 import { useProductosTable } from "./useProductoTable";
+/*
+
+por el momento no se utiliza
+
+*/
+import Spinner from "../../ui/Spinner";
+
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";

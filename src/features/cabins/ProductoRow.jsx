@@ -29,6 +29,9 @@ const Img = styled.img`
   object-fit: cover;
   object-position: center;
   transform: scale(1.5) translateX(-7px);
+  margin-left:10px;
+  margin-top:5px;
+  margin-bottom:5px;
 `;
 
 const Producto = styled.div`
@@ -49,9 +52,8 @@ const Descripcion = styled.div`
   color: var(--color-green-700);
 `;
 const Nombre = styled.div`
-  font-family: "Sono";
-  font-weight: 500;
-
+  font-family: "Sono";  
+  font-weight: 500; 
   color: var(--color-green-700);
 `;
 

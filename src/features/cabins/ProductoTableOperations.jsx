@@ -16,16 +16,10 @@ function ProductoTableOperations() {
 
       <SortBy
         options={[
-          { value: "name-asc", label: "Ordenar por nombre (A-Z)" },
-          { value: "name-desc", label: "Ordenar por nombre (Z-A)" },
-          {
-            value: "regularPrice-asc",
-            label: "Ordenar por precio (Mas bajo primero)",
-          },
-          {
-            value: "regularPrice-desc",
-            label: "Ordenar por precio (Mas alto primero)",
-          },
+          { value: "name-asc", label: "Ordenar por nombre (A-Z)",},
+          { value: "name-desc", label: "Ordenar por nombre (Z-A)",},
+          { value: "precio-asc", label: "Ordenar por precio (Mas bajo primero)",},
+          { value: "precio-desc",label: "Ordenar por precio (Mas alto primero)",},
         ]}
       />
     </TableOperations>

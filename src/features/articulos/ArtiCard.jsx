@@ -4,6 +4,7 @@ import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
 import { HiBookmark } from "react-icons/hi2";
 import { IoLogoWhatsapp } from "react-icons/io";
+
 import { getNumber } from "../../services/apiWhatsApp";
 
 function handleButtonClick() {
@@ -12,17 +13,19 @@ function handleButtonClick() {
 }
 
 const Card = styled.div`
-  width: 300px;
-  height: 470px;
-  border: 1px solid #ccc;
+  width: 270px;
+  height: 100%;
+  border: 0px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
   overflow: hidden;
+  margin-left:35px;
+  margin-top:30px;
 `;
 
 // Define a styled component for the image
 const Image = styled.img`
-  width: 100%;
+  width: 300px;
   height: 300px;
   object-fit: cover;
 `;
@@ -35,9 +38,12 @@ const Content = styled.div`
 // Define a styled component for the card title
 const Title = styled.h3`
   margin: 0;
-  font-size: 20px;
+  font-size: 21px;
   color: var(--color-grey-600);
   font-family: "Sono";
+  text-align: center;
+  border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+  text-transform: uppercase;
 `;
 
 // Define a styled component for the card description
@@ -47,29 +53,25 @@ const Descripcion = styled.p`
   font-family: "Sono";
   font-weight: 500;
   color: var(--color-green-700);
+  &::first-letter {
+    text-transform: uppercase;
+  }
 `;
-// const Producto = styled.div`
-//   font-size: 1.6rem;
-//   font-weight: 600;
-//   color: var(--color-grey-600);
-//   font-family: "Sono";
-// `;
 
 const Precio = styled.div`
   font-family: "Sono";
   font-weight: 600;
+  margin-bottom:5px;
 `;
 
 function ArtiCard({ producto }) {
-  const {
+  const {//lo que se muestra
     id: productoId,
     name,
-    precio, //name
-    cantidad, // maxCapacity
-    descripcion, //regularPrice
-    // discount,
+    precio,
+    cantidad, 
+    descripcion,
     image,
-    // description,
   } = producto;
 
   return (
@@ -79,7 +81,9 @@ function ArtiCard({ producto }) {
         <Title>{name}</Title>
         <Descripcion>{descripcion}</Descripcion>
         <Precio>{formatCurrency(precio)}</Precio>
-        <div>Numero de articulos: {cantidad} </div>
+        <div style={{color: '#77C66E' }}>Numero de articulos: {cantidad} </div>
+
+        {/* los tres puntitos=modal */}
         <Modal>
           <Menus.Menu>
             <Menus.Toggle id={productoId} />
