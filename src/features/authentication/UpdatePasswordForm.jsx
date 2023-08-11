@@ -49,7 +49,8 @@ function UpdatePasswordForm() {
           {...register("passwordConfirm", {
             required: "Este campo es requerido",
             validate: (value) =>
-              getValues().password === value || "Passwords need to match",
+              getValues().password === value ||
+              "Las contraseñas deben coincidir",
           })}
         />
       </FormRow>

@@ -70,7 +70,7 @@ function SignupForm() {
             required: "Este campo es obligatorio",
             minLength: {
               value: 8,
-              message: "Password needs a minimum of 8 characters",
+              message: "Contraseña debe tener un minimo de 8 caracteres",
             },
           })}
         />
