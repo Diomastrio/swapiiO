@@ -88,7 +88,7 @@ function SignupForm() {
             required: "Este campo es obligatorio",
             validate: (value) =>
               value === getValues().password ||
-              "Las contraseñas deben coincidir",
+              "Las contraseñas deben coincidir ",
           })}
         />
       </FormRow>
