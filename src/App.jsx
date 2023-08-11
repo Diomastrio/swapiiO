@@ -6,7 +6,6 @@ import { Toaster } from "react-hot-toast";
 import GlobalStyles from "./styles/GlobalStyles";
 import Productos from "./pages/Productos";
 import Users from "./pages/Users";
-import Settings from "./pages/Settings";
 import Account from "./pages/Account";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
@@ -45,7 +44,6 @@ function App() {
               <Route path="articulos" element={<Articulos />} />
 
               <Route path="users" element={<Users />} />
-              <Route path="settings" element={<Settings />} />
               <Route path="account" element={<Account />} />
             </Route>
 

@@ -74,25 +74,12 @@ function MainNav() {
             <span>Agregar Articulos</span>
           </StyledNavLink>
         </li>
-        {/* <li>
-          <StyledNavLink to="/Articulos">
-            <HiOutlineQueueList />
-            <span>Agregar Articulos</span>
-          </StyledNavLink>
-        </li> */}
         <li>
           <StyledNavLink to="/cabins">
             <HiCurrencyDollar />
             <span>Subscripción</span>
           </StyledNavLink>
         </li>
-
-        {/* <li>
-          <StyledNavLink to="/settings">
-            <HiOutlineCog6Tooth />
-            <span>Settings</span>
-          </StyledNavLink>
-        </li> */}
       </NavList>
     </nav>
   );

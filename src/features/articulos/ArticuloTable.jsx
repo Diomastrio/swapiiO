@@ -25,7 +25,7 @@ function ArticuloTable() {
     filteredProductos = productos.filter((producto) => producto.precio > 0);
 
   // 2) SORT
-  const sortBy = searchParams.get("sortBy") || "startDate-asc";
+  const sortBy = searchParams.get("sortBy") || "precio-asc";
   const [field, direction] = sortBy.split("-");
   const modifier = direction === "asc" ? 1 : -1;
   const sortedProductos = filteredProductos.sort(
@@ -34,7 +34,7 @@ function ArticuloTable() {
 
   return (
     <Menus>
-      <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+      <Table columns="0.6fr 1.8fr 2fr 1fr 2fr 2fr">
         <Table.Header></Table.Header>
 
         <Table.Body

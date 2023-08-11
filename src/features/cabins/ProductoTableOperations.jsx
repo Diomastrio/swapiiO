@@ -9,8 +9,8 @@ function ProductoTableOperations() {
         filterField="precio"
         options={[
           { value: "all", label: "Todos" },
-          { value: "no-discount", label: "No descuento" },
-          { value: "with-discount", label: "Con descuento" },
+          // { value: "no-discount", label: "No descuento" },
+          // { value: "with-discount", label: "Con descuento" },
         ]}
       />
 
@@ -18,8 +18,14 @@ function ProductoTableOperations() {
         options={[
           { value: "name-asc", label: "Ordenar por nombre (A-Z)" },
           { value: "name-desc", label: "Ordenar por nombre (Z-A)" },
-          { value: "regularPrice-asc", label: "Ordenar por precio (Mas bajo primero)" },
-          { value: "regularPrice-desc", label: "Ordenar por precio (Mas alto primero)" },
+          {
+            value: "regularPrice-asc",
+            label: "Ordenar por precio (Mas bajo primero)",
+          },
+          {
+            value: "regularPrice-desc",
+            label: "Ordenar por precio (Mas alto primero)",
+          },
         ]}
       />
     </TableOperations>
