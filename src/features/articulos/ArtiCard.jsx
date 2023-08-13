@@ -19,21 +19,20 @@ const Card = styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 1);
   overflow: hidden;
-  margin-left:35px;
-  margin-top:30px;
-  Background: rgba(127, 127, 127, 0.1)
-  ;
+  margin-left: 35px;
+  margin-top: 30px;
+  background: rgba(127, 127, 127, 0.1);
 `;
 
 // Define a styled component for the image
 const Image = styled.img`
   width: 300px;
-  height:  300px;
+  height: 300px;
   object-fit: cover;
   overflow: hidden;
-  transition:scale 400ms;
+  transition: scale 400ms;
   &:hover {
-     scale:140%;
+    scale: 140%;
   }
 `;
 
@@ -61,7 +60,7 @@ const Descripcion = styled.p`
   font-size: 16px;
   font-family: "Sono";
   font-weight: 500;
-  color: var(--color-green-700);
+  color: var(--color-grey-700);
   &::first-letter {
     text-transform: uppercase;
   }
@@ -71,21 +70,22 @@ const Precio = styled.div`
   font-family: "Sono";
   font-weight: 800;
   font-size: 20px;
-  color:white;
-  margin-bottom:10px;
-  margin-left:-1px;
-  padding:8px;
+  color: white;
+  margin-bottom: 10px;
+  margin-left: -1px;
+  padding: 8px;
   display: inline-block;
   border-radius: 10px;
-  background-color: #cc0c39;
+  background-color: #64c49f;
 `;
 
 function ArtiCard({ producto }) {
-  const {//lo que se muestra
+  const {
+    //lo que se muestra
     id: productoId,
     name,
     precio,
-    cantidad, 
+    cantidad,
     descripcion,
     image,
     nombre,
@@ -94,14 +94,20 @@ function ArtiCard({ producto }) {
   return (
     <Card>
       <Content>
-      <div  style={{overflow: 'hidden' }}>
-        <Image src={image} /></div>
+        <div style={{ overflow: "hidden" }}>
+          <Image src={image} />
+        </div>
         <Title>{name}</Title>
-        <div >Vendedor: <span style={{color: '#008080', textTransform: 'uppercase' }}>{nombre} </span></div>
+        <div>
+          Vendedor:{" "}
+          <span style={{ color: "#008080", textTransform: "uppercase" }}>
+            {nombre}{" "}
+          </span>
+        </div>
         <Descripcion>{descripcion}</Descripcion>
         <Precio>{formatCurrency(precio)}</Precio>
-        <div style={{color: '#77C66E' }}>Numero de artículos: {cantidad} </div>
-  
+        <div style={{ color: "#37979b" }}>Numero de artículos: {cantidad} </div>
+
         {/* los tres puntitos=modal */}
         <Modal>
           <Menus.Menu>
