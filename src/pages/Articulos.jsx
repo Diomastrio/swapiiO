@@ -16,7 +16,7 @@ function Articulos() {
   return (
     <>
       <Row type="horizontal">
-        <Heading as="h1">Articulos Disponibles</Heading>
+        <Heading as="h1">Artículos Disponibles</Heading>
         <ProductoTableOperations />
       </Row>
       <ArticuloTable />

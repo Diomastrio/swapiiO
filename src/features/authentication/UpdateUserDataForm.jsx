@@ -44,7 +44,7 @@ function UpdateUserDataForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <FormRow label="Direccion de correo">
+      <FormRow label="Dirección de correo">
         <Input value={email} disabled />
       </FormRow>
 

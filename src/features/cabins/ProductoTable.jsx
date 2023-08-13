@@ -42,11 +42,11 @@ function ProductoTable() {
       <Table columns="0.7fr 1.2fr 0fr 2fr 1fr 1fr 0.5fr">
         <Table.Header>
           <div>Articulo</div>
-          <div>nombre</div>
+          <div>Nombre</div>
           <div></div>
-          <div>cantidad</div>
+          <div>Cantidad</div>
           <div>Precio</div>
-          <div>Descripcion</div>
+          <div>Descripción</div>
           <div></div>
         </Table.Header>
 

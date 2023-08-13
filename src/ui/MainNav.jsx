@@ -1,11 +1,16 @@
 import { NavLink } from "react-router-dom";
+import supabase from "../services/supabase";
 import styled from "styled-components";
+
 import {
   HiChatBubbleLeftRight,
   HiCurrencyDollar,
   HiShoppingCart,
   HiOutlineQueueList,
+  HiBookmark,
 } from "react-icons/hi2";
+
+import { MdAdminPanelSettings } from "react-icons/md";
 
 const NavList = styled.ul`
   display: flex;
@@ -52,6 +57,26 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
+async function getUserRol() {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  return user.user_metadata.rol;
+}
+const userRol = await getUserRol();
+
+let heading;
+if (userRol === "admin") {
+  heading = (
+    <li>
+      <StyledNavLink to="/Admin">
+        <MdAdminPanelSettings />
+        <span>Admin</span>
+      </StyledNavLink>
+    </li>
+  );
+}
+
 function MainNav() {
   return (
     <nav>
@@ -63,7 +88,7 @@ function MainNav() {
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/bookings">
+          <StyledNavLink to="/Mensajes">
             <HiChatBubbleLeftRight />
             <span>Mensajes</span>
           </StyledNavLink>
@@ -75,11 +100,18 @@ function MainNav() {
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/cabins">
+          <StyledNavLink to="/Subscripción">
             <HiCurrencyDollar />
             <span>Subscripción</span>
           </StyledNavLink>
         </li>
+        <li>
+          <StyledNavLink to="/Guardado">
+            <HiBookmark />
+            <span>Guardado</span>
+          </StyledNavLink>
+        </li>
+        <>{heading}</>
       </NavList>
     </nav>
   );

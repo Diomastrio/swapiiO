@@ -23,7 +23,7 @@ const StyledConfirmDelete = styled.div`
 function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
   return (
     <StyledConfirmDelete>
-      <Heading as="h3">Delete {resourceName}</Heading>
+      <Heading as="h3">Borrar {resourceName}</Heading>
       <p>
         Estas seguro de que quieres borrar {resourceName} permanentemente? Esta
         accion no puede ser revertida.

@@ -5,6 +5,8 @@ import SortBy from "../../ui/SortBy";
 function ProductoTableOperations() {
   return (
     <TableOperations>
+      <div>
+    </div>
       <Filter
         filterField="precio"
         options={[

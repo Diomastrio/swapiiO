@@ -89,7 +89,7 @@ function ProductoRow({ producto }) {
       <Img src={image} />
       <Nombre>{name}</Nombre>
       <Producto>{}</Producto>
-      <div>Numero de articulos: {cantidad} </div>
+      <div>Numero de artículos: {cantidad} </div>
       <Precio>{formatCurrency(precio)}</Precio>
 
       <Descripcion>{descripcion}</Descripcion>

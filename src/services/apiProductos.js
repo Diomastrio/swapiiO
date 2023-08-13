@@ -9,14 +9,33 @@ async function insertUserEmail() {
   return user.email;
 }
 async function insertUserPhone() {
-  // Get the user email
+  // Get the user phone
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  // Return the user email
+  // Return the user phone
   return user.user_metadata.phone;
 }
 
+async function insertUserName() {
+  // Get the user name
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  // Return the user name
+  return user.user_metadata.fullName;
+}
+
+async function getUserRol() {
+  // Get the user rol
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  // Return the user rol
+  return user.user_metadata.rol;
+}
+
+//create
 export async function createEditProducto(newProducto, id) {
   const hasImagePath = newProducto.image?.startsWith?.(supabaseUrl);
 
@@ -32,10 +51,13 @@ export async function createEditProducto(newProducto, id) {
   const userEmail = await insertUserEmail();
   // Get the user phone
   const userPhone = await insertUserPhone();
+  // Get the user name
+  const userName = await insertUserName();
 
-  // Add the user email to the newProducto object
+  // Add the email,phone,name to the newProducto object
   newProducto.email = userEmail;
   newProducto.phone = userPhone;
+  newProducto.nombre = userName;
 
   // // 1. Crear/editar productos
   let query = supabase.from("productos");
@@ -49,7 +71,7 @@ export async function createEditProducto(newProducto, id) {
 
   if (error) {
     console.error(error);
-    throw new Error("Producto could not be created");
+    throw new Error("Producto no pudo ser creado");
   }
 
   // 2. Upload image
@@ -76,23 +98,29 @@ export async function getProductos() {
 
   if (error) {
     console.error(error);
-    throw new Error("Productos could not be loaded");
+    throw new Error("Productos no pudieron ser cargados");
   }
 
   return data;
 }
 
+//mostrar solo a 
 export async function getProductosTable() {
-  const userEmail = await insertUserEmail();
-  const { data, error } = await supabase
-    .from("productos")
-    .select("*")
-    .eq("email", userEmail);
+    // Get the user rol just admin
+    const userRol= await getUserRol(); 
+  if(userRol==='admin'){ const { data, error } = await supabase.from("productos").select("*");
   if (error) {
     console.error(error);
-    throw new Error("Productos could not be loaded");
+    throw new Error("Productos no pudieron ser cargados");
+  }return data;
+   }else{//everyone else
+    const userEmail = await insertUserEmail();
+  const { data, error } = await supabase.from("productos").select("*").eq("email", userEmail);
+  if (error) {
+    console.error(error);
+    throw new Error("Productos no pudieron ser cargados");
   }
-  return data;
+  return data;}
 }
 
 export async function deleteProducto(id) {

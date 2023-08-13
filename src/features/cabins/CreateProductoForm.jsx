@@ -77,7 +77,7 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
             required: "Este campo es requerido",
             min: {
               value: 1,
-              message: "El precio debe ser minimo 1",
+              message: "El precio debe ser mínimo 1",
             },
           })}
         />
@@ -92,13 +92,13 @@ function CreateProductoForm({ productoToEdit = {}, onCloseModal }) {
             required: "Este campo es requerido",
             min: {
               value: 1,
-              message: "cantidad deberia ser minimo 1",
+              message: "cantidad debería ser mínimo 1",
             },
           })}
         />
       </FormRow>
 
-      <FormRow label="Descripcion" error={errors?.descripcion?.message}>
+      <FormRow label="Descripción" error={errors?.descripcion?.message}>
         <Textarea
           type="text"
           id="descripcion"

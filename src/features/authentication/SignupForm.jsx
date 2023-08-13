@@ -13,9 +13,9 @@ function SignupForm() {
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
-  function onSubmit({ fullName, email, password, phone }) {
+  function onSubmit({ fullName, email, password, phone}) {
     signup(
-      { fullName, email, password, phone },
+      { fullName, email, password, phone, rol:'cliente' },
       {
         onSettled: () => reset(),
       }
@@ -34,7 +34,7 @@ function SignupForm() {
         />
       </FormRow>
 
-      <FormRow label="Correo electronico" error={errors?.email?.message}>
+      <FormRow label="Correo electrónico" error={errors?.email?.message}>
         <Input
           type="email"
           id="email"
@@ -43,18 +43,25 @@ function SignupForm() {
             required: "Este campo es obligatorio",
             pattern: {
               value: /\S+@\S+\.\S+/,
-              message: "Porfavor ingresa un correo electronico valido",
+              message: "Por favor ingresa un correo electrónico valido",
             },
           })}
         />
       </FormRow>
 
-      <FormRow label="Telefono" error={errors?.phone?.message}>
+      <FormRow label="Teléfono" error={errors?.phone?.message}  >
         <Input
-          type="number"
+          type="text"
           id="phone"
           disabled={isLoading}
-          {...register("phone", { required: "Este campo es obligatorio" })}
+          pattern="^[0-9]*$" title="Por favor, ingrese solo números"
+          {...register("phone", { 
+            required: "Este campo es obligatorio" ,
+            step:"any",
+          minLength: {
+            value: 10,
+            message: "Telefono debe tener un mínimo de 10 caracteres",
+          },})}
         />
       </FormRow>
 
@@ -70,7 +77,7 @@ function SignupForm() {
             required: "Este campo es obligatorio",
             minLength: {
               value: 8,
-              message: "Contraseña debe tener un minimo de 8 caracteres",
+              message: "Contraseña debe tener un mínimo de 8 caracteres",
             },
           })}
         />

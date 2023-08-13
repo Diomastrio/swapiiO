@@ -7,9 +7,9 @@ import Row from "../ui/Row";
 function Productos() {
   return (
     <>
-   
+      
       <Row type="horizontal">
-       <Heading as="h1">Agrega productos</Heading>
+       <Heading as="h1">Admin Dashboard</Heading>
       </Row>
 
       <Row>
