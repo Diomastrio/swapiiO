@@ -16,7 +16,3 @@ export async function getNumber(id) {
   }
   return productos;
 }
-
-// export async function whatsUrl() {
-//   const productos = `https://wa.me/+52${productos.phone}`;
-// }

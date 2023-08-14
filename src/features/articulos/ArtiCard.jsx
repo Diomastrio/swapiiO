@@ -4,14 +4,7 @@ import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
 import { HiBookmark } from "react-icons/hi2";
 import { IoLogoWhatsapp } from "react-icons/io";
-
-import { getNumber } from "../../services/apiWhatsApp";
-
-function handleButtonClick() {
-  // const id = id; // Replace with the actual ID
-  getNumber();
-}
-
+import { getProductName } from "../../services/apiProductos";
 const Card = styled.div`
   width: 270px;
   height: 100%;
@@ -115,7 +108,7 @@ function ArtiCard({ producto }) {
 
             <Menus.List id={productoId}>
               <Menus.Button
-                onClick={handleButtonClick}
+                onClick={console.log(getProductName)}
                 icon={<IoLogoWhatsapp />}
               >
                 Mensaje{" "}

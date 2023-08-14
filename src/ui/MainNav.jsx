@@ -3,7 +3,6 @@ import supabase from "../services/supabase";
 import styled from "styled-components";
 
 import {
-  HiChatBubbleLeftRight,
   HiCurrencyDollar,
   HiShoppingCart,
   HiOutlineQueueList,
@@ -87,12 +86,12 @@ function MainNav() {
             <span>Articulos</span>
           </StyledNavLink>
         </li>
-        <li>
+        {/* <li>
           <StyledNavLink to="/Mensajes">
             <HiChatBubbleLeftRight />
             <span>Mensajes</span>
           </StyledNavLink>
-        </li>
+        </li> */}
         <li>
           <StyledNavLink to="/Productos">
             <HiOutlineQueueList />

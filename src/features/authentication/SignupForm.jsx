@@ -5,17 +5,19 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import { useSignup } from "./useSignup";
 import { useNavigate } from "react-router-dom";
-
-// Email regex: /\S+@\S+\.\S+/
+import { useRef } from "react";
 
 function SignupForm() {
+  const phoneRef = useRef(null);
   const { signup, isLoading } = useSignup();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
-  function onSubmit({ fullName, email, password, phone}) {
+  function onSubmit({ fullName, email, password }) {
+    const phone = phoneRef.current.value;
+    // Do something with the phone number...
     signup(
-      { fullName, email, password, phone, rol:'cliente' },
+      { fullName, email, password, phone, rol: "cliente" },
       {
         onSettled: () => reset(),
       }
@@ -49,19 +51,22 @@ function SignupForm() {
         />
       </FormRow>
 
-      <FormRow label="Teléfono" error={errors?.phone?.message}  >
+      <FormRow label="Teléfono" error={errors?.phone?.message}>
         <Input
           type="text"
           id="phone"
           disabled={isLoading}
-          pattern="^[0-9]*$" title="Por favor, ingrese solo números"
-          {...register("phone", { 
-            required: "Este campo es obligatorio" ,
-            step:"any",
-          minLength: {
-            value: 10,
-            message: "Telefono debe tener un mínimo de 10 caracteres",
-          },})}
+          pattern="^[0-9]*$"
+          title="Por favor, ingrese solo números"
+          {...register("phone", {
+            required: "Este campo es obligatorio",
+            step: "any",
+            minLength: {
+              value: 10,
+              message: "Telefono debe tener un mínimo de 10 caracteres",
+            },
+          })}
+          ref={phoneRef}
         />
       </FormRow>
 
