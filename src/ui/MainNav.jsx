@@ -1,23 +1,28 @@
 import { NavLink } from "react-router-dom";
-import supabase from "../services/supabase";
+import {getUserRol} from "../services/apiAuth";
 import styled from "styled-components";
+import supabase from "../services/supabase";
 
 import {
+  HiChatBubbleLeftRight,
   HiCurrencyDollar,
   HiShoppingCart,
   HiOutlineQueueList,
   HiBookmark,
 } from "react-icons/hi2";
 
-import { MdAdminPanelSettings } from "react-icons/md";
+import {
+  MdAdminPanelSettings
+} from "react-icons/md";
 
-const NavList = styled.ul`
+
+const NavList = styled.ul `
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-`;
+` ;
 
-const StyledNavLink = styled(NavLink)`
+const StyledNavLink = styled(NavLink) `
   &:link,
   &:visited {
     display: flex;
@@ -56,25 +61,48 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-async function getUserRol() {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  return user.user_metadata.rol;
-}
-const userRol = await getUserRol();
+ async function getCurrentUser() {
+  const { data: session } = await supabase.auth.getSession();
+  if (!session.session) return null;
 
-let heading;
-if (userRol === "admin") {
-  heading = (
+  const { error } = await supabase.auth.getUser();
+
+  if (error) throw new Error(error.message); 
+  const userRol= await getUserRol();
+
+  return userRol
+}
+
+const now = await getCurrentUser();
+// (async () => {
+//   const now = await getCurrentUser();
+//   console.log(now); // will output "admin" or the user's role
+// })();
+ let adminshow;
+if(now === 'admin'){
+  adminshow = (
     <li>
-      <StyledNavLink to="/Admin">
-        <MdAdminPanelSettings />
-        <span>Admin</span>
-      </StyledNavLink>
-    </li>
+    <StyledNavLink to="/Admin">
+      <MdAdminPanelSettings />
+      <span>Admin</span>
+    </StyledNavLink>
+  </li>
   );
 }
+
+let heading;
+
+if(now !== 'admin'){
+  heading = (
+    <li>
+          <StyledNavLink to="/Productos">
+            <HiOutlineQueueList />
+            <span>Agregar Articulos</span>
+          </StyledNavLink>
+      </li>
+  );
+}
+
 
 function MainNav() {
   return (
@@ -86,18 +114,15 @@ function MainNav() {
             <span>Articulos</span>
           </StyledNavLink>
         </li>
-        {/* <li>
+        <li>
           <StyledNavLink to="/Mensajes">
             <HiChatBubbleLeftRight />
             <span>Mensajes</span>
           </StyledNavLink>
-        </li> */}
-        <li>
-          <StyledNavLink to="/Productos">
-            <HiOutlineQueueList />
-            <span>Agregar Articulos</span>
-          </StyledNavLink>
         </li>
+       <>
+          {heading}
+        </>
         <li>
           <StyledNavLink to="/Subscripción">
             <HiCurrencyDollar />
@@ -109,8 +134,10 @@ function MainNav() {
             <HiBookmark />
             <span>Guardado</span>
           </StyledNavLink>
-        </li>
-        <>{heading}</>
+        </li><>
+          {adminshow}
+        </>
+        
       </NavList>
     </nav>
   );

@@ -39,7 +39,7 @@ function ProtectedRoute({ children, isAdminOnly }) {
 
   // 4. If there IS a user, render the app
   if (isAuthenticated) return children;
-  if (isAdmin) return {isAdminOnly};
+  if (isAdmin) return {children,isAdminOnly};
 
 }
 

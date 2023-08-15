@@ -7,6 +7,10 @@ import { useSignup } from "./useSignup";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
+export function getWhatsAppLink(phone) {
+  return `{https://wa.me/+52${phone}}`;
+}
+
 function SignupForm() {
   const phoneRef = useRef(null);
   const { signup, isLoading } = useSignup();
@@ -15,7 +19,7 @@ function SignupForm() {
   const navigate = useNavigate();
   function onSubmit({ fullName, email, password }) {
     const phone = phoneRef.current.value;
-    // Do something with the phone number...
+
     signup(
       { fullName, email, password, phone, rol: "cliente" },
       {

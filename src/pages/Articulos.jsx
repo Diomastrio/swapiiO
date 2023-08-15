@@ -1,6 +1,7 @@
-import ProductoTableOperations from "../features/productos/ProductoTableOperations";
-import { useProductos } from "../features/productos/useProducto";
+import ProductoTableOperations from "../features/cabins/ProductoTableOperations";
+import { useProductos } from "../features/cabins/useProducto";
 import ArticuloTable from "../features/articulos/ArticuloTable";
+
 
 import Heading from "../ui/Heading";
 import Spinner from "../ui/Spinner";

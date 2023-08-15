@@ -1,5 +1,5 @@
-import ProductoTable from "../features/productos/ProductoTable";
-import AddProducto from "../features/productos/AddProducto";
+import ProductoTable from "../features/cabins/ProductoTable";
+import AddProducto from "../features/cabins/AddProducto";
 
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
@@ -7,8 +7,9 @@ import Row from "../ui/Row";
 function Productos() {
   return (
     <>
+      
       <Row type="horizontal">
-        <Heading as="h1">Admin Dashboard</Heading>
+       <Heading as="h1">Admin Dashboard</Heading>
       </Row>
 
       <Row>

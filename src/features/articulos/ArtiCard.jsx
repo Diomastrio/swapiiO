@@ -4,7 +4,9 @@ import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
 import { HiBookmark } from "react-icons/hi2";
 import { IoLogoWhatsapp } from "react-icons/io";
-import { getProductName } from "../../services/apiProductos";
+// import { getWhatsAppLink } from "../authentication/SignupForm";
+// import Button from "../../ui/Button";
+
 const Card = styled.div`
   width: 270px;
   height: 100%;
@@ -53,7 +55,7 @@ const Descripcion = styled.p`
   font-size: 16px;
   font-family: "Sono";
   font-weight: 500;
-  color: var(--color-grey-700);
+  color: var(--color-green-700);
   &::first-letter {
     text-transform: uppercase;
   }
@@ -69,7 +71,7 @@ const Precio = styled.div`
   padding: 8px;
   display: inline-block;
   border-radius: 10px;
-  background-color: #64c49f;
+  background-color: #cc0c39;
 `;
 
 function ArtiCard({ producto }) {
@@ -99,7 +101,7 @@ function ArtiCard({ producto }) {
         </div>
         <Descripcion>{descripcion}</Descripcion>
         <Precio>{formatCurrency(precio)}</Precio>
-        <div style={{ color: "#37979b" }}>Numero de artículos: {cantidad} </div>
+        <div style={{ color: "#77C66E" }}>Numero de artículos: {cantidad} </div>
 
         {/* los tres puntitos=modal */}
         <Modal>
@@ -107,16 +109,12 @@ function ArtiCard({ producto }) {
             <Menus.Toggle id={productoId} />
 
             <Menus.List id={productoId}>
-              <Menus.Button
-                onClick={console.log(getProductName)}
-                icon={<IoLogoWhatsapp />}
-              >
-                Mensaje{" "}
-              </Menus.Button>{" "}
+              <Menus.Button icon={<IoLogoWhatsapp />}>Mensaje </Menus.Button>{" "}
               <Menus.Button icon={<HiBookmark />}>Guardar</Menus.Button>
             </Menus.List>
           </Menus.Menu>
         </Modal>
+        {/* <Button>WhatsApp</Button> */}
       </Content>
     </Card>
   );

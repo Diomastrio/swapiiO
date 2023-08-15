@@ -45,6 +45,11 @@ export async function logout() {
   if (error) throw new Error(error.message);
 }
 
+export async function getUserRol() {
+  const { data: { user },} = await supabase.auth.getUser();
+  return user.user_metadata.rol;
+}  
+
 export async function updateCurrentUser({ password, fullName, avatar }) {
   // A1. Get old name
   async function GetOldName() {
@@ -63,9 +68,9 @@ export async function updateCurrentUser({ password, fullName, avatar }) {
   async function GetNewName() {
     const { data: { user },} = await supabase.auth.getUser();
     return user.user_metadata.fullName; }
-    const NewuserName = await GetNewName();     
+    const NewUserName = await GetNewName();     
    //update ^^^^
-   await supabase.from('productos').update({ nombre: NewuserName }).eq('nombre', OldUserName);
+   await supabase.from('productos').update({ nombre: NewUserName }).eq('nombre', OldUserName);
 
   if (error) throw new Error(error.message);
   if (!avatar) return data;

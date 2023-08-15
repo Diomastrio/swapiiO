@@ -16,6 +16,8 @@ import PageNotFound from "./pages/PageNotFound";
 import Entrar from "./pages/Entrar";
 import Articulos from "./pages/Articulos";
 import Admin from "./pages/Admin";
+//import Home from "./pages/Home";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,18 +52,19 @@ function App() {
               <Route path="account" element={<Account />} />
 
               <Route
-                path="admin"
-                element={
-                  <ProtectedRoute adminOnly>
-                    <Admin />
-                  </ProtectedRoute>
-                }
-              />
+      path="admin"
+      element={
+        <ProtectedRoute UserType="admin">
+          <Admin />
+        </ProtectedRoute>
+      }
+    />
             </Route>
 
             <Route path="Login" element={<Login />} />
             <Route path="entrar" element={<Entrar />} />
             <Route path="*" element={<PageNotFound />} />
+            {/* <Route path="*" element={<Home/>} /> */}
           </Routes>
         </BrowserRouter>
 
