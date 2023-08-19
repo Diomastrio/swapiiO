@@ -5,21 +5,13 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import { useSignup } from "./useSignup";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
-
-export function getWhatsAppLink(phone) {
-  return `{https://wa.me/+52${phone}}`;
-}
 
 function SignupForm() {
-  const phoneRef = useRef(null);
   const { signup, isLoading } = useSignup();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
-  function onSubmit({ fullName, email, password }) {
-    const phone = phoneRef.current.value;
-
+  function onSubmit({ fullName, email, password, phone }) {
     signup(
       { fullName, email, password, phone, rol: "cliente" },
       {
@@ -70,7 +62,6 @@ function SignupForm() {
               message: "Telefono debe tener un mínimo de 10 caracteres",
             },
           })}
-          ref={phoneRef}
         />
       </FormRow>
 
