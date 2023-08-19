@@ -17,6 +17,7 @@ import Entrar from "./pages/Entrar";
 import Articulos from "./pages/Articulos";
 import Admin from "./pages/Admin";
 import Messages from "./pages/Messages";
+import Homepage from "./pages/Homepage";
 //import Home from "./pages/Home";
 
 const queryClient = new QueryClient({
@@ -44,7 +45,7 @@ function App() {
                 </ProtectedRoute>
               }
             >
-              <Route index element={<Navigate replace to="articulos" />} />
+              <Route index element={<Navigate replace to="Homepage" />} />
               <Route path="productos" element={<Productos />} />
               <Route path="articulos" element={<Articulos />} />
               <Route path="messages" element={<Messages />} />
@@ -62,6 +63,7 @@ function App() {
               />
             </Route>
 
+            <Route path="Homepage" element={<Homepage />} />
             <Route path="Login" element={<Login />} />
             <Route path="entrar" element={<Entrar />} />
             <Route path="*" element={<PageNotFound />} />

@@ -38,6 +38,13 @@ const variations = {
       background-color: var(--color-grey-50);
     }
   `,
+  swapii: css`
+    color: "#37979b";
+    background-color: #64c49f;
+    &:hover {
+      background-color: "#65cf77";
+    }
+  `,
   danger: css`
     color: var(--color-red-100);
     background-color: var(--color-red-700);
