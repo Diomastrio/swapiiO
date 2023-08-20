@@ -149,7 +149,7 @@ function ArtiCard({ producto }) {
 
         {/* los tres puntitos=modal */}
         <Modal>
-          <NavList>
+          <NavList toggle={productoId}>
             <StyledNavLink to="/Messages">
               <HiChatBubbleLeftRight />
             </StyledNavLink>{" "}

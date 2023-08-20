@@ -5,7 +5,41 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import { useSignup } from "./useSignup";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
+const CheckboxWrapper = styled.label`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+const CheckboxInput = styled.input`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+`;
+
+const CheckboxBox = styled.span`
+  position: relative;
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease-in-out;
+  margin-right: 0.5rem;
+
+  ${CheckboxInput}:checked ~ & {
+    background-color: #6ae2aa;
+    border-color: #3ecce6;
+  }
+`;
+
+const CheckboxLabel = styled.span`
+  font-size: 1rem;
+`;
 function SignupForm() {
   const { signup, isLoading } = useSignup();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
@@ -111,6 +145,11 @@ function SignupForm() {
         </Button>
         <Button disabled={isLoading}>Registrarse</Button>
       </FormRow>
+      <CheckboxWrapper>
+        <CheckboxInput type="checkbox" />
+        <CheckboxBox />
+        <CheckboxLabel>Check me!</CheckboxLabel>
+      </CheckboxWrapper>
     </Form>
   );
 }
