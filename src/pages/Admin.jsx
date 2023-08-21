@@ -3,6 +3,7 @@ import AddProducto from "../features/productos/AddProducto";
 
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
+import Sugerencias from "../features/sugerencias/sugerencias";
 
 function Productos() {
   return (
@@ -14,6 +15,9 @@ function Productos() {
       <Row>
         <ProductoTable />
         <AddProducto />
+      </Row>
+      <Row>
+        <Sugerencias />
       </Row>
     </>
   );
