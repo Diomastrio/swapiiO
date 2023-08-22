@@ -16,9 +16,10 @@ import PageNotFound from "./pages/PageNotFound";
 import Entrar from "./pages/Entrar";
 import Articulos from "./pages/Articulos";
 import Admin from "./pages/Admin";
-import Messages from "./pages/Messages";
 import Homepage from "./pages/Homepage";
-//import Home from "./pages/Home";
+import Sugerencias from "./features/sugerencias/Sugerencias"; 
+import Mensajes from "./mensajes/Mensa"; 
+import Marcador from "./pages/Marcador";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,7 +29,6 @@ const queryClient = new QueryClient({
     },
   },
 });
-
 function App() {
   return (
     <DarkModeProvider>
@@ -48,10 +48,13 @@ function App() {
               <Route index element={<Navigate replace to="Homepage" />} />
               <Route path="productos" element={<Productos />} />
               <Route path="articulos" element={<Articulos />} />
-              <Route path="messages" element={<Messages />} />
-
               <Route path="users" element={<Users />} />
               <Route path="account" element={<Account />} />
+              <Route path="sugerencias" element={<Sugerencias />} />
+              <Route path="mensajes" element={<Mensajes />} />
+              <Route path="Marcador" element={<Marcador />} />
+
+
 
               <Route
                 path="admin"

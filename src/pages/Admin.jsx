@@ -1,23 +1,20 @@
-import ProductoTable from "../features/productos/ProductoTable";
-import AddProducto from "../features/productos/AddProducto";
+import ProductoAdminTable from "../features/cabins/ProductoAdminTable";
+import AddProducto from "../features/cabins/AddProducto";
 
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
-import Sugerencias from "../features/sugerencias/sugerencias";
 
 function Productos() {
   return (
     <>
+      
       <Row type="horizontal">
-        <Heading as="h1">Admin Dashboard</Heading>
+       <Heading as="h1">Admin Dashboard</Heading>
       </Row>
 
       <Row>
-        <ProductoTable />
+        <ProductoAdminTable />
         <AddProducto />
-      </Row>
-      <Row>
-        <Sugerencias />
       </Row>
     </>
   );

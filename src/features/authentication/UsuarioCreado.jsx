@@ -8,7 +8,7 @@ function IniciaSession() {
     navigate("/entrar");
   }
 
-  return <Button onClick={handleClick}>Ya tengo un usuario</Button>;
+  return <Button onClick={handleClick}>Ya tengo una cuenta</Button>;
 }
 
 export default IniciaSession;

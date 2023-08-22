@@ -5,7 +5,7 @@ import SignupForm from "../features/authentication/SignupForm";
 import UsuarioCreado from "../features/authentication/UsuarioCreado";
 
 const LoginLayout = styled.main`
-  min-height: 100vh;
+  height: 130vh;
   display: grid;
   grid-template-columns: 60rem;
   align-content: center;
@@ -18,7 +18,7 @@ function Login() {
   return (
     <LoginLayout>
       <Logo />
-      <Heading as="h4">Crea tu usuario</Heading>
+      <Heading as="h4">Crea una cuenta</Heading>
       <SignupForm />
       <UsuarioCreado />
     </LoginLayout>

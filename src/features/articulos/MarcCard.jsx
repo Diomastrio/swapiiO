@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers";
 import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
-import { HiHeart } from "react-icons/hi2";
-import { useCreateMarcador } from "../cabins/useCreateMarcador";
+import { useDeleteProducto } from "../cabins/useDeleteMarcador";
+import { HiTrash } from "react-icons/hi2";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 const Card = styled.div `
   width: 270px;
@@ -14,11 +15,11 @@ const Card = styled.div `
   overflow: hidden;
   margin-left:35px;
   margin-top:30px;
-  Background: rgba(127, 127, 127, 0.1);
+  Background: rgba(127, 0, 0, 0.5);
 `;
 
 // Define a styled component for the image
-const Image = styled.img`
+const Image = styled.img `
   width: 300px;
   height:  300px;
   object-fit: cover;
@@ -30,12 +31,12 @@ const Image = styled.img`
 `;
 
 // Define a styled component for the card content
-const Content = styled.div`
+const Content = styled.div `
   padding: 15px;
 `;
 
 // Define a styled component for the card title
-const Title = styled.h3`
+const Title = styled.h3 `
   margin: 0;
   margin-bottom: 5px;
 
@@ -50,7 +51,7 @@ const Title = styled.h3`
 // Define a styled component for the card description
 const Descripcion = styled.p `
   margin: 10px 0;
-  font-size: 16px;
+  font-size: 18px;
   font-family: "Sono";
   font-weight: 500;
   color: var(--color-green-700);
@@ -59,7 +60,7 @@ const Descripcion = styled.p `
   }
 `;
 
-const Precio = styled.div`
+const Precio = styled.div `
   font-family: "Sono";
   font-weight: 800;
   font-size: 20px;
@@ -72,9 +73,8 @@ const Precio = styled.div`
   background-color: #cc0c39;
 `;
 
-function ArtiCard({ producto }) {
-    const {createMarcador } = useCreateMarcador();
-
+function MarcCard({ producto }) {
+    const { isDeleting, deleteProducto } = useDeleteProducto();
 
   const {
     id: productoId,
@@ -84,23 +84,12 @@ function ArtiCard({ producto }) {
     descripcion,
     image,
     nombre,
-   
+    marcador_id : marcadorId
   } = producto;
 
   const handleClick = (id) => {
-    console.log(id);
-    // console.log(name);
-    // console.log(precio);
-    // console.log(cantidad);
-    // console.log(email);
-    // console.log(descripcion);
+    console.log(producto);
   };
-
-  const handleMarcador = (id) => {
-    createMarcador({
-      id_productos: id,
-    });
-  }
 
   return (
     <Card>
@@ -108,10 +97,10 @@ function ArtiCard({ producto }) {
       <div  style={{overflow: 'hidden' }}>
         <Image src={image} /></div>
         <Title>{name}</Title>
-        <div >Vendedor: <span style={{color: '#008080', textTransform: 'uppercase' }}>{nombre} </span></div>
+        <div >Vendedor: <span style={{color: '#36454F', textTransform: 'uppercase', fontSize: '18px' }}>{nombre} </span></div>
         <Descripcion>{descripcion}</Descripcion>
         <Precio>{formatCurrency(precio)}</Precio>
-        <div style={{color: '#77C66E' }}>Numero de artículos: {cantidad} </div>
+        <div style={{color: '#FFD700 ', fontSize: '17px' }}>Numero de artículos: {cantidad} </div>
   
         {/* los tres puntitos=modal */}
         <Modal>
@@ -119,12 +108,20 @@ function ArtiCard({ producto }) {
             <Menus.Toggle id={productoId} />
 
             <Menus.List id={productoId}>
-              <Menus.Button onClick={() => handleClick(productoId)}>
-                Mensaje{" "}
-              </Menus.Button>{" "}
+              <Menus.Button onClick={() => handleClick(productoId)}>Mensaje{" "} </Menus.Button>
 
-              <Menus.Button icon={<HiHeart />}  onClick={() => handleMarcador(productoId)}>Guardar</Menus.Button>
-            </Menus.List>
+              <Modal.Open opens="delete">
+                <Menus.Button icon={<HiTrash />} opens="delete">Eliminar</Menus.Button>
+              </Modal.Open>
+              </Menus.List>
+
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName="marcador"
+                disabled={isDeleting}
+                onConfirm={() => deleteProducto(marcadorId)}
+              />
+            </Modal.Window>
           </Menus.Menu>
         </Modal>
       </Content>
@@ -132,4 +129,4 @@ function ArtiCard({ producto }) {
   );
 }
 
-export default ArtiCard;
+export default MarcCard;

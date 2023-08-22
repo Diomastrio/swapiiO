@@ -1,14 +1,30 @@
 import styled from "styled-components";
 import work from "../../img/work.jpg";
+
 const AboutSection = styled.section`
-  background-color: #fff;
-  display: table-row;
-  padding: 5rem 4rem;
-  justify-content: center;
-  align-items: center;
-  background-image: url(${work});
-  background-size: cover;
-  background-position: center;
+background-color: #fff;
+padding: 5rem 0;
+justify-content: center;
+align-items: center;
+background-image: url(${work});
+background-size: cover;
+background-position: center;
+padding-left: 2rem;
+z-index: 1; /* add negative z-index to ::before pseudo-element */
+
+
+position: relative;
+ 
+&::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1; /* add negative z-index to ::before pseudo-element */
+}
 `;
 
 const AboutHeader = styled.h2`

@@ -10,6 +10,18 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 
+// const TableRow = styled.div`
+//   display: grid;
+//   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
+//   column-gap: 2.4rem;
+//   align-items: center;
+//   padding: 1.4rem 2.4rem;
+
+//   &:not(:last-child) {
+//     border-bottom: 1px solid var(--color-grey-100);
+//   }
+// `;
+
 const Img = styled.img`
   display: block;
   width: 6.4rem;
@@ -17,9 +29,9 @@ const Img = styled.img`
   object-fit: cover;
   object-position: center;
   transform: scale(1.5) translateX(-7px);
-  margin-left: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-left:10px;
+  margin-top:5px;
+  margin-bottom:5px;
 `;
 
 const Producto = styled.div`
@@ -40,8 +52,8 @@ const Descripcion = styled.div`
   color: var(--color-green-700);
 `;
 const Nombre = styled.div`
-  font-family: "Sono";
-  font-weight: 500;
+  font-family: "Sono";  
+  font-weight: 500; 
   color: var(--color-green-700);
 `;
 

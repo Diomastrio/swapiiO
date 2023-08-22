@@ -2,8 +2,6 @@ import styled from "styled-components";
 import Button from "../../ui/Button";
 import { useNavigate } from "react-router-dom";
 import DarkModeToggle from "../../ui/DarkModeToggle";
-import { HiLogin } from "react-icons/hi";
-import { VscAdd } from "react-icons/vsc";
 import { useDarkMode } from "../../context/DarkModeContext";
 
 const StyledLogo = styled.div`
@@ -43,12 +41,12 @@ function HeaderMenu() {
       <Logo />
       <li>
         <Button variation="swapii" onClick={() => navigate("/Login")}>
-          <VscAdd /> crear cuenta
+          Crear cuenta
         </Button>
       </li>{" "}
       <li>
         <Button onClick={() => navigate("/entrar")}>
-          <HiLogin /> Iniciar session
+           Iniciar sesion
         </Button>
       </li>
       <li>

@@ -9,6 +9,21 @@ const WorkSection = styled.section`
   background-size: cover;
   background-position: center;
   padding-left: 2rem;
+  z-index: 1; /* add negative z-index to ::before pseudo-element */
+
+
+position: relative;
+ 
+&::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: -1; /* add negative z-index to ::before pseudo-element */
+}
 `;
 
 const WorkHeader = styled.h2`

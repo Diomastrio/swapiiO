@@ -2,7 +2,7 @@ import TableOperations from "../../ui/TableOperations";
 import Filter from "../../ui/Filter";
 import SortBy from "../../ui/SortBy";
 
-function ProductoTableOperations() {
+function ArticuloTableFilter() {
   return (
     <TableOperations>
       <div>
@@ -28,4 +28,4 @@ function ProductoTableOperations() {
   );
 }
 
-export default ProductoTableOperations;
+export default ArticuloTableFilter;

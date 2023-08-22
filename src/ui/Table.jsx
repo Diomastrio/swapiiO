@@ -102,7 +102,7 @@ function Body({ data, render }) {
   if (!data.length)
     return (
       <Empty>
-        No se encuentran articulos con las caracteristicas solicitadas
+        No se encuentran articulos
       </Empty>
     );
 

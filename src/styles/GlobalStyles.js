@@ -4,16 +4,16 @@ const GlobalStyles = createGlobalStyle`
 :root {
   &, &.light-mode {
   /* Grey */
-  --color-grey-0: #fff;
-  --color-grey-50: #f9fafb;
-  --color-grey-100: #f3f4f6;
-  --color-grey-200: #e5e7eb;
+  --color-grey-0: #f3f4f6; /* body-sidebar */
+  --color-grey-50: #9ca3af ;/* out-hover */
+  --color-grey-100: #d1d5db; /* lineas_exterior */
+  --color-grey-200: #d1d5db; /* lineas_body */
   --color-grey-300: #d1d5db;
   --color-grey-400: #9ca3af;
-  --color-grey-500: #6b7280;
-  --color-grey-600: #4b5563;
-  --color-grey-700: #374151;
-  --color-grey-800: #1f2937;
+  --color-grey-500: #9ca3af; /*iconos*/
+  --color-grey-600: #4b5563; /*text-sidebar*/
+  --color-grey-700: #111827; /*text-inside*/
+  --color-grey-800: #111827; /*text-hover*/
   --color-grey-900: #111827;
 
   --color-blue-100: #e0f2fe;

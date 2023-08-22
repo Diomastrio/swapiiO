@@ -1,12 +1,12 @@
 import supabase, { supabaseUrl } from "./supabase";
 
-async function insertUserEmail() {
-  // Get the user email
+async function insertUserId() {
+  // Get the user id
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  // Return the user email
-  return user.email;
+  // Return the user id
+  return user.id;
 }
 async function insertUserPhone() {
   // Get the user phone
@@ -48,14 +48,14 @@ export async function createEditProducto(newProducto, id) {
     : `${supabaseUrl}/storage/v1/object/public/articulos/${imageName}`;
 
   // Get the user email
-  const userEmail = await insertUserEmail();
+  const userId = await insertUserId();
   // Get the user phone
   const userPhone = await insertUserPhone();
   // Get the user name
   const userName = await insertUserName();
 
   // Add the email,phone,name to the newProducto object
-  newProducto.email = userEmail;
+  newProducto.id_usuarios = userId;
   newProducto.phone = userPhone;
   newProducto.nombre = userName;
 
@@ -114,8 +114,8 @@ export async function getProductosTable() {
     throw new Error("Productos no pudieron ser cargados");
   }return data;
    }else{//everyone else
-    const userEmail = await insertUserEmail();
-  const { data, error } = await supabase.from("productos").select("*").eq("email", userEmail);
+    const userId = await insertUserId();
+  const { data, error } = await supabase.from("productos").select("*").eq("id_usuarios", userId);
   if (error) {
     console.error(error);
     throw new Error("Productos no pudieron ser cargados");

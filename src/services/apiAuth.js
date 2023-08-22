@@ -1,6 +1,22 @@
 import supabase, { supabaseUrl } from "./supabase";
 
+
 export async function signup({ fullName, email, password, phone, rol }) {
+  // Check if user already exists
+  const { data: users, error: fetchError } = await supabase
+    .from("usuario")
+    .select("*")
+    .eq("email", email)
+    .limit(1);
+
+  if (fetchError) {
+    throw new Error(fetchError.message);
+  }
+
+  if (users.length > 0) {
+    throw new Error("Email already registered");
+  }
+
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -14,7 +30,9 @@ export async function signup({ fullName, email, password, phone, rol }) {
     },
   });
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    throw new Error(error.message);
+  }
 
   return data;
 }

@@ -27,14 +27,14 @@ function Homefooter() {
     <>
       <StyledFooter>
         <Link to="https://www.instagram.com/swapiioficial/">
-          <AiOutlineInstagram />
+          <AiOutlineInstagram style={{fontSize:'40px', marginTop:'10px'}}/>
         </Link>
         <Link to="https://twitter.com/Swapiioficial">
-          <AiFillTwitterCircle />
+          <AiFillTwitterCircle style={{fontSize:'40px', marginTop:'10px'}}/>
         </Link>
         <span>Universidad Tecnologica de Durango</span>{" "}
         <span>swapii@gmail.com</span>
-        <AiOutlineCopyright />
+        <AiOutlineCopyright style={{fontSize:'25px', marginTop:'10px'}}/>
       </StyledFooter>
     </>
   );

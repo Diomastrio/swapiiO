@@ -6,7 +6,7 @@ async function getSugerencias() {
 
   if (error) {
     console.error(error);
-    throw new Error("Sugerencias no pudierno ser cargadas");
+    throw new Error("Sugerencias no pudieron ser cargadas");
   }
 
   return data;

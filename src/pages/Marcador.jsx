@@ -1,6 +1,6 @@
 import ArticuloTableFilter from "../features/cabins/ArticuloTableFilter";
-import { useArticulos } from "../features/cabins/useArticulo";
-import ArticuloTable from "../features/articulos/ArticuloTable";
+import { useMarcadorTable } from "../features/cabins/useMarcador";
+import MarcadorTable from "../features/articulos/MarcadorTable";
 
 
 import Heading from "../ui/Heading";
@@ -9,17 +9,17 @@ import Row from "../ui/Row";
 import Empty from "../ui/Empty";
 
 function Articulos() {
-  const { isLoading, productos } = useArticulos();
+  const { isLoading, productos } = useMarcadorTable();
   if (isLoading) return <Spinner />;
-  if (!productos.length) return <Empty resourceName="productos" />;
-
+  if (!productos.length) return <Empty resourceName="marcadores" />;
+//console.log(productos)
   return (
     <>
       <Row type="horizontal">
-        <Heading as="h1">Artículos Disponibles</Heading>
+        <Heading as="h1">Artículos Marcados</Heading>
         <ArticuloTableFilter />
       </Row>
-      <ArticuloTable />
+      <MarcadorTable />
     </>
   );
 }

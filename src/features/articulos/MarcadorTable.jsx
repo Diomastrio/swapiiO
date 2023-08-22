@@ -1,5 +1,5 @@
-import { useArticulos } from "../cabins/useArticulo";
-import ArtiCard from "./ArtiCard";
+import { useMarcadorTable } from "../cabins/useMarcador";
+import MarcCard from "./MarcCard";
 
 import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table";
@@ -19,14 +19,14 @@ const CenteredText = styled.p`
 `;
 
 function ArticuloTable() {
-  const { isLoading, productos } = useArticulos();
+  const { isLoading, productos } = useMarcadorTable();
   const [searchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]); // Add search results state variable
   const [searchResults2, setSearchResults2] = useState(1); // Add search results state variable
 
   if (isLoading) return <Spinner />;
-  if (!productos.length) return <Empty resourceName="productos" />;
+  if (!productos.length) return <Empty resourceName="marcadores" />;
 
   // 1) FILTER
   const filterValue = searchParams.get("precio") || "all";
@@ -35,6 +35,10 @@ function ArticuloTable() {
   
   let filteredProductos;
   if (filterValue === "all") filteredProductos = productos;
+  // if (filterValue === "no-discount")
+  //  filteredProductos = productos.filter((producto) => producto.precio === 0);
+  // if (filterValue === "with-discount")
+  //   filteredProductos = productos.filter((producto) => producto.precio > 0);
 
 // 2) BUSQUEDA
 const handleSearch = async (event) => {
@@ -100,7 +104,7 @@ const handleSearch = async (event) => {
         <Table.Bodyi
           data={sortedProductos}
           render={(producto) => (
-            <ArtiCard producto={producto} key={producto.id} />
+            <MarcCard producto={producto} key={producto.id} />
           )}
         />
       ) : (

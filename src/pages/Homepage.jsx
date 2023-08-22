@@ -1,6 +1,6 @@
-import HomeHeader from "../features/header/HomeHeader";
-import HomeMain from "../features/header/HomeMain";
-import Homefooter from "../features/header/Homefooter";
+import HomeHeader from "../features/homepage/HomeHeader";
+import HomeMain from "../features/homepage/HomeMain";
+import Homefooter from "../features/homepage/Homefooter";
 function Homepage() {
   return (
     <div>

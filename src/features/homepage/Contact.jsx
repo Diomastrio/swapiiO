@@ -6,9 +6,10 @@ import Modal from "../../ui/Modal";
 import { AiOutlineForm } from "react-icons/ai";
 import supabase from "../../services/supabase";
 import { toast } from "react-hot-toast";
+
 const CenteredIcon = styled(AiOutlineForm)`
-  font-size: 3rem; /* Adjust the font size as needed */
-  margin-left: 5rem;
+  font-size: 7rem; /* Adjust the font size as needed */
+  margin-left: 3rem;
 `;
 const IconWrapper = styled.div`
   display: flex;
@@ -16,13 +17,26 @@ const IconWrapper = styled.div`
   justify-content: flex-start;
 `;
 const ContactSection = styled.section`
-  background-color: #f7f7f7;
-  padding: 5rem 0;
-  justify-content: center;
-  align-items: center;
-  background-image: url(${contact});
-  background-size: cover;
-  background-position: center;
+position: relative;
+background-color: #f7f7f7;
+padding: 5rem 0;
+justify-content: center;
+align-items: center;
+background-image: url(${contact});
+background-size: cover;
+background-position: center;
+z-index: 1; /* add z-index to parent */
+
+&::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1; /* add negative z-index to ::before pseudo-element */
+}
 `;
 
 const ContactHeader = styled.h2`
@@ -87,7 +101,7 @@ function Contact() {
       <ContactHeader>Alguna sugerencia?</ContactHeader>
       <Modal>
         <Modal.Open opens="sugerencias">
-          <IconWrapper>
+        <IconWrapper>
             <CenteredIcon />
           </IconWrapper>
         </Modal.Open>

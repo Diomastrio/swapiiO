@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { getProductosTable } from "../../services/apiProductos";
+import { getMarcadorTable } from "../../services/apiMarcador";
 
-export function useProductosTable() {
+export function useMarcadorTable() {
   const {
     isLoading,
     data: productos,
     error,
   } = useQuery({
     queryKey: ["productos"],
-    queryFn: getProductosTable,
+    queryFn: getMarcadorTable,
   });
 
   return { isLoading, error, productos };
