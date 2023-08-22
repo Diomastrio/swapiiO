@@ -70,55 +70,55 @@ async function getCurrentUser() {
 
   return userRol;
 }
+
+const now = await getCurrentUser();
 let adminshow;
+if (now === "admin") {
+  adminshow = (
+    <>
+      <li>
+        <StyledNavLink to="/Admin">
+          <MdAdminPanelSettings />
+          <span>Admin</span>
+        </StyledNavLink>
+      </li>
+      <li>
+        <StyledNavLink to="/sugerencias">
+          <MdAddComment />
+          <span>Sugerencias</span>
+        </StyledNavLink>
+      </li>
+    </>
+  );
+}
+
 let heading;
 
-(async () => {
-  const now = await getCurrentUser();
+if (now !== "admin") {
+  heading = (
+    <>
+      <li>
+        <StyledNavLink to="/Productos">
+          <HiOutlineQueueList />
+          <span>Agregar Articulos</span>
+        </StyledNavLink>
+      </li>
 
-  if (now === "admin") {
-    adminshow = (
-      <>
-        <li>
-          <StyledNavLink to="/Admin">
-            <MdAdminPanelSettings />
-            <span>Admin</span>
-          </StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink to="/sugerencias">
-            <MdAddComment />
-            <span>Sugerencias</span>
-          </StyledNavLink>
-        </li>
-      </>
-    );
-  } else {
-    heading = (
-      <>
-        <li>
-          <StyledNavLink to="/Productos">
-            <HiOutlineQueueList />
-            <span>Agregar Articulos</span>
-          </StyledNavLink>
-        </li>
-
-        <li>
-          <StyledNavLink to="/Suscripcion">
-            <HiCurrencyDollar />
-            <span>Suscripción</span>
-          </StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink to="/Marcador">
-            <HiHeart />
-            <span>Guardado</span>
-          </StyledNavLink>
-        </li>
-      </>
-    );
-  }
-})();
+      <li>
+        <StyledNavLink to="/Subscripcion">
+          <HiCurrencyDollar />
+          <span>Suscripción</span>
+        </StyledNavLink>
+      </li>
+      <li>
+        <StyledNavLink to="/Marcador">
+          <HiHeart />
+          <span>Guardado</span>
+        </StyledNavLink>
+      </li>
+    </>
+  );
+}
 
 function MainNav() {
   return (

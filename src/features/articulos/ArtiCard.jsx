@@ -7,6 +7,8 @@ import { useCreateMarcador } from "../cabins/useCreateMarcador";
 
 import { useState } from "react";
 import Mensa from "../../mensajes/Mensa";
+import Button from "../../ui/Button";
+
 const Card = styled.div`
   width: 270px;
   height: 100%;
@@ -104,8 +106,7 @@ function ArtiCard({ producto }) {
 
   const [showModal, setShowModal] = useState(false);
 
-  const handleOpenModal = (event) => {
-    event.preventDefault();
+  const handleOpenModal = (e) => {
     setShowModal(true);
   };
   const handleCloseModal = () => {
@@ -137,9 +138,12 @@ function ArtiCard({ producto }) {
               {/* <Menus.Button onClick={() => handleClick(productoId)}> Mensaje </Menus.Button> */}
 
               {/* Mensaje */}
-              <Menus.Button onClick={handleOpenModal} style={{ width: "100%" }}>
-                Mensaje
-              </Menus.Button>
+              <Button
+                onClick={handleOpenModal}
+                style={{ width: "100%", backgroundColor: "#000" }}
+              >
+                Mensajes
+              </Button>
               {showModal && (
                 <div
                   style={{
@@ -162,7 +166,7 @@ function ArtiCard({ producto }) {
                       backgroundColor: "var(--color-grey-100)",
                       padding: "20px",
                       borderRadius: "5px",
-                      width: "80%",
+                      width: "90%",
                     }}
                     onClick={(e) => e.stopPropagation()}
                   >
@@ -171,7 +175,6 @@ function ArtiCard({ producto }) {
                 </div>
               )}
               {/*Mensaje */}
-
               <Menus.Button
                 icon={
                   <HiHeart
