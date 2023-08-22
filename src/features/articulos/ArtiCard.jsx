@@ -127,7 +127,11 @@ function ArtiCard({ producto }) {
                 Mensaje{" "}
               </Menus.Button>{" "}
               <Menus.Button
-                icon={<HiHeart />}
+                icon={
+                  <HiHeart
+                    style={{ width: "30px", height: "30px", color: "#cc0c39" }}
+                  />
+                }
                 onClick={() => handleMarcador(productoId)}
               >
                 Guardar

@@ -8,7 +8,7 @@ import {
   HiCurrencyDollar,
   HiShoppingCart,
   HiOutlineQueueList,
-  HiBookmark,
+  HiHeart,
 } from "react-icons/hi2";
 
 import { MdAdminPanelSettings } from "react-icons/md";
@@ -116,7 +116,7 @@ if (now !== "admin") {
       </li>
       <li>
         <StyledNavLink to="/Marcador">
-          <HiBookmark />
+          <HiHeart />
           <span>Guardado</span>
         </StyledNavLink>
       </li>
