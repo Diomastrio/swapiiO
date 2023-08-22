@@ -40,14 +40,12 @@ function HeaderMenu() {
     <StyledHeaderMenu>
       <Logo />
       <li>
-        <Button variation="swapii" onClick={() => navigate("/Login")}>
+        <Button variation="swapii" onClick={() => navigate("/Homepage")}>
           Crear cuenta
         </Button>
       </li>{" "}
       <li>
-        <Button onClick={() => navigate("/entrar")}>
-           Iniciar sesion
-        </Button>
+        <Button onClick={() => navigate("/entrar")}>Iniciar sesion</Button>
       </li>
       <li>
         <DarkModeToggle />
