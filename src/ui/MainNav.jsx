@@ -70,59 +70,55 @@ async function getCurrentUser() {
 
   return userRol;
 }
-
-const now = await getCurrentUser();
-// (async () => {
-//   const now = await getCurrentUser();
-//   console.log(now); // will output "admin" or the user's role
-// })();
 let adminshow;
-if (now === "admin") {
-  adminshow = (
-    <>
-      <li>
-        <StyledNavLink to="/Admin">
-          <MdAdminPanelSettings />
-          <span>Admin</span>
-        </StyledNavLink>
-      </li>
-      <li>
-        <StyledNavLink to="/sugerencias">
-          <MdAddComment />
-          <span>Sugerencias</span>
-        </StyledNavLink>
-      </li>
-    </>
-  );
-}
-
 let heading;
 
-if (now !== "admin") {
-  heading = (
-    <>
-      <li>
-        <StyledNavLink to="/Productos">
-          <HiOutlineQueueList />
-          <span>Agregar Articulos</span>
-        </StyledNavLink>
-      </li>
+(async () => {
+  const now = await getCurrentUser();
 
-      <li>
-        <StyledNavLink to="/Suscripcion">
-          <HiCurrencyDollar />
-          <span>Suscripción</span>
-        </StyledNavLink>
-      </li>
-      <li>
-        <StyledNavLink to="/Marcador">
-          <HiHeart />
-          <span>Guardado</span>
-        </StyledNavLink>
-      </li>
-    </>
-  );
-}
+  if (now === "admin") {
+    adminshow = (
+      <>
+        <li>
+          <StyledNavLink to="/Admin">
+            <MdAdminPanelSettings />
+            <span>Admin</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/sugerencias">
+            <MdAddComment />
+            <span>Sugerencias</span>
+          </StyledNavLink>
+        </li>
+      </>
+    );
+  } else {
+    heading = (
+      <>
+        <li>
+          <StyledNavLink to="/Productos">
+            <HiOutlineQueueList />
+            <span>Agregar Articulos</span>
+          </StyledNavLink>
+        </li>
+
+        <li>
+          <StyledNavLink to="/Suscripcion">
+            <HiCurrencyDollar />
+            <span>Suscripción</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/Marcador">
+            <HiHeart />
+            <span>Guardado</span>
+          </StyledNavLink>
+        </li>
+      </>
+    );
+  }
+})();
 
 function MainNav() {
   return (
