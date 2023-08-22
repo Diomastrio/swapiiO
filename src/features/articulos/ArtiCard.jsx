@@ -5,6 +5,8 @@ import Menus from "../../ui/Menus";
 import { HiHeart } from "react-icons/hi2";
 import { useCreateMarcador } from "../cabins/useCreateMarcador";
 
+import { useState } from "react";
+import Mensa from "../../mensajes/Mensa";
 const Card = styled.div`
   width: 270px;
   height: 100%;
@@ -43,7 +45,7 @@ const Title = styled.h3`
   color: var(--color-grey-600);
   font-family: "Sono";
   text-align: center;
-  border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+  border-bottom: 1px solid rgba(192, 192, 192, 0.5);
   text-transform: uppercase;
 `;
 
@@ -53,7 +55,7 @@ const Descripcion = styled.p`
   font-size: 16px;
   font-family: "Sono";
   font-weight: 500;
-  color: var(--color-grey-700);
+  color: var(--color-green-700);
   &::first-letter {
     text-transform: uppercase;
   }
@@ -69,7 +71,7 @@ const Precio = styled.div`
   padding: 8px;
   display: inline-block;
   border-radius: 10px;
-  background-color: #64c49f;
+  background-color: #cc0c39;
 `;
 
 function ArtiCard({ producto }) {
@@ -85,14 +87,14 @@ function ArtiCard({ producto }) {
     nombre,
   } = producto;
 
-  const handleClick = (id) => {
-    console.log(id);
-    // console.log(name);
-    // console.log(precio);
-    // console.log(cantidad);
-    // console.log(email);
-    // console.log(descripcion);
-  };
+  // const handleClick = (id) => {
+  //   console.log(id);
+  //   // console.log(name);
+  //   // console.log(precio);
+  //   // console.log(cantidad);
+  //   // console.log(email);
+  //   // console.log(descripcion);
+  // };
 
   const handleMarcador = (id) => {
     createMarcador({
@@ -100,6 +102,15 @@ function ArtiCard({ producto }) {
     });
   };
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = (event) => {
+    event.preventDefault();
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   return (
     <Card>
       <Content>
@@ -115,7 +126,7 @@ function ArtiCard({ producto }) {
         </div>
         <Descripcion>{descripcion}</Descripcion>
         <Precio>{formatCurrency(precio)}</Precio>
-        <div style={{ color: "#37979b" }}>Numero de artículos: {cantidad} </div>
+        <div style={{ color: "#77C66E" }}>Numero de artículos: {cantidad} </div>
 
         {/* los tres puntitos=modal */}
         <Modal>
@@ -123,9 +134,44 @@ function ArtiCard({ producto }) {
             <Menus.Toggle id={productoId} />
 
             <Menus.List id={productoId}>
-              <Menus.Button onClick={() => handleClick(productoId)}>
-                Mensaje{" "}
-              </Menus.Button>{" "}
+              {/* <Menus.Button onClick={() => handleClick(productoId)}> Mensaje </Menus.Button> */}
+
+              {/* Mensaje */}
+              <Menus.Button onClick={handleOpenModal} style={{ width: "100%" }}>
+                Mensaje
+              </Menus.Button>
+              {showModal && (
+                <div
+                  style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: 999,
+                  }}
+                  onClick={handleCloseModal}
+                >
+                  <div
+                    style={{
+                      position: "relative",
+                      backgroundColor: "var(--color-grey-100)",
+                      padding: "20px",
+                      borderRadius: "5px",
+                      width: "80%",
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <Mensa />
+                  </div>
+                </div>
+              )}
+              {/*Mensaje */}
+
               <Menus.Button
                 icon={
                   <HiHeart
