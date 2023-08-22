@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import {getUserRol} from "../services/apiAuth";
+import { getUserRol } from "../services/apiAuth";
 import styled from "styled-components";
 import supabase from "../services/supabase";
 
@@ -11,22 +11,17 @@ import {
   HiBookmark,
 } from "react-icons/hi2";
 
-import {
-  MdAdminPanelSettings
-} from "react-icons/md";
-
+import { MdAdminPanelSettings } from "react-icons/md";
 
 import { MdAddComment } from "react-icons/md";
 
-
-const NavList = styled.ul `
+const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+`;
 
-` ;
-
-const StyledNavLink = styled(NavLink) `
+const StyledNavLink = styled(NavLink)`
   &:link,
   &:visited {
     display: flex;
@@ -43,15 +38,15 @@ const StyledNavLink = styled(NavLink) `
   &:hover,
   &:active,
   &.active:link,
-  &.active:visited { 
-    color: var(--color-grey-800);    
+  &.active:visited {
+    color: var(--color-grey-800);
     background-color: var(--color-grey-50);
     border-radius: var(--border-radius-sm);
   }
 
   & svg {
     width: 3.3rem;
-    height: 3.3rem;         
+    height: 3.3rem;
     color: var(--color-grey-500);
     transition: all 0.3s;
   }
@@ -64,16 +59,16 @@ const StyledNavLink = styled(NavLink) `
   }
 `;
 
- async function getCurrentUser() {
+async function getCurrentUser() {
   const { data: session } = await supabase.auth.getSession();
   if (!session.session) return null;
 
   const { error } = await supabase.auth.getUser();
 
-  if (error) throw new Error(error.message); 
-  const userRol= await getUserRol();
+  if (error) throw new Error(error.message);
+  const userRol = await getUserRol();
 
-  return userRol
+  return userRol;
 }
 
 const now = await getCurrentUser();
@@ -81,59 +76,62 @@ const now = await getCurrentUser();
 //   const now = await getCurrentUser();
 //   console.log(now); // will output "admin" or the user's role
 // })();
- let adminshow;
-if(now === 'admin'){
-  adminshow = (<>
-    <li>
-    <StyledNavLink to="/Admin">
-      <MdAdminPanelSettings/>
-      <span>Admin</span>
-    </StyledNavLink>
-  </li>
-  <li>
-    <StyledNavLink to="/sugerencias">
-      <MdAddComment/>
-      <span>Sugerencias</span>
-    </StyledNavLink>
-  </li></>
+let adminshow;
+if (now === "admin") {
+  adminshow = (
+    <>
+      <li>
+        <StyledNavLink to="/Admin">
+          <MdAdminPanelSettings />
+          <span>Admin</span>
+        </StyledNavLink>
+      </li>
+      <li>
+        <StyledNavLink to="/sugerencias">
+          <MdAddComment />
+          <span>Sugerencias</span>
+        </StyledNavLink>
+      </li>
+    </>
   );
 }
 
 let heading;
 
-if(now !== 'admin'){
-  heading = (<>
-    <li>
-          <StyledNavLink to="/Productos">
-            <HiOutlineQueueList />
-            <span>Agregar Articulos</span>
-          </StyledNavLink>
-             </li>
+if (now !== "admin") {
+  heading = (
+    <>
+      <li>
+        <StyledNavLink to="/Productos">
+          <HiOutlineQueueList />
+          <span>Agregar Articulos</span>
+        </StyledNavLink>
+      </li>
 
-             <li>
-          <StyledNavLink to="/Subscripcion">
-            <HiCurrencyDollar />
-            <span>Suscripción</span>
-          </StyledNavLink>
-        </li>
-        <li>
-          <StyledNavLink to="/Marcador">
-            <HiBookmark />
-            <span>Guardado</span>
-          </StyledNavLink>
-        </li></>
+      <li>
+        <StyledNavLink to="/Suscripcion">
+          <HiCurrencyDollar />
+          <span>Suscripción</span>
+        </StyledNavLink>
+      </li>
+      <li>
+        <StyledNavLink to="/Marcador">
+          <HiBookmark />
+          <span>Guardado</span>
+        </StyledNavLink>
+      </li>
+    </>
   );
 }
-
 
 function MainNav() {
   return (
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to="/Articulos" >
+          <StyledNavLink to="/Articulos">
             <HiShoppingCart />
-            <span >Articulos</span>
+            <span>Articulos</span>
           </StyledNavLink>
         </li>
         <li>
@@ -142,13 +140,8 @@ function MainNav() {
             <span>Mensajes</span>
           </StyledNavLink>
         </li>
-       <>
-          {heading}
-        </>
-        <>
-          {adminshow}
-        </>
-        
+        <>{heading}</>
+        <>{adminshow}</>
       </NavList>
     </nav>
   );

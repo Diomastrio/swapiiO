@@ -17,9 +17,10 @@ import Entrar from "./pages/Entrar";
 import Articulos from "./pages/Articulos";
 import Admin from "./pages/Admin";
 import Homepage from "./pages/Homepage";
-import Sugerencias from "./features/sugerencias/Sugerencias"; 
-import Mensajes from "./mensajes/Mensa"; 
+import Sugerencias from "./features/sugerencias/Sugerencias";
+import Mensajes from "./mensajes/Mensa";
 import Marcador from "./pages/Marcador";
+import Suscripcion from "./pages/Suscripcion";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,11 +51,10 @@ function App() {
               <Route path="articulos" element={<Articulos />} />
               <Route path="users" element={<Users />} />
               <Route path="account" element={<Account />} />
+              <Route path="suscripcion" element={<Suscripcion />} />
               <Route path="sugerencias" element={<Sugerencias />} />
               <Route path="mensajes" element={<Mensajes />} />
               <Route path="Marcador" element={<Marcador />} />
-
-
 
               <Route
                 path="admin"
