@@ -73,7 +73,7 @@ const Precio = styled.div`
   padding: 8px;
   display: inline-block;
   border-radius: 10px;
-  background-color: #cc0c39;
+  background-color: #14dbc1;
 `;
 
 function ArtiCard({ producto }) {
